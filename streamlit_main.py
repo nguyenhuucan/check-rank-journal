@@ -656,7 +656,7 @@ if st.session_state['authenticated']:
 
         with subtabs[2]:
             
-            st.subheader("Truy cập Web of Science - Bản quyền - Mọi lúc - Mọi nơi")
+            st.subheader("Truy cập Web of Science - Bản quyền TDTU - Mọi lúc - Mọi nơi")
 
             username = "check.journal.fms.tdtu@gmail.com"
             password = "TDTu*88888888"
