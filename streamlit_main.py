@@ -662,7 +662,7 @@ if st.session_state['authenticated']:
             password = "TDTu*88888888"
 
             st.markdown("""
-            **📌 Thông tin:** <br> User: check.journal.fms.tdtu@gmail.com <br> Pass: TDTu*88888888
+            **📌 Thông tin đăng nhập:** <br> User: check.journal.fms.tdtu@gmail.com <br> Pass: TDTu*88888888
             """, unsafe_allow_html=True)
 
             # Link mở tab mới
