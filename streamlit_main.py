@@ -659,10 +659,10 @@ if st.session_state['authenticated']:
             st.subheader("Truy cập Web of Science - Bản quyền - Mọi lúc - Mọi nơi")
 
             username = "check.journal.fms.tdtu@gmail.com"
-            password = "CheckJournal@1997"
+            password = "TDTu*88888888"
 
             st.markdown("""
-            **📌 Thông tin:** Đang cập nhật ...
+            **📌 Thông tin:** \nUser: check.journal.fms.tdtu@gmail.com \nPass: TDTu*88888888
             """)
 
             # Link mở tab mới
