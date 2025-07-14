@@ -1,0 +1,10 @@
+streamlit
+pandas
+requests
+beautifulsoup4
+python-dotenv
+openpyxl
+xlsxwriter
+joblib
+streamlit-autorefresh
+pyperclip
