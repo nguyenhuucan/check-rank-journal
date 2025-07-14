@@ -662,14 +662,14 @@ if st.session_state['authenticated']:
             password = "TDTu*88888888"
 
             st.markdown("""
-            **📌 Thông tin:** \nUser: check.journal.fms.tdtu@gmail.com \nPass: TDTu*88888888
+            **📌 Thông tin:** <br> User: check.journal.fms.tdtu@gmail.com <br> Pass: TDTu*88888888
             """)
 
             # Link mở tab mới
             wos_url = "https://www.webofscience.com"
             st.markdown(
                 f"""
-                <a href="{wos_url}" target="_blank">🚀 Mở Web of Science</a>
+                <a href="{wos_url}" target="_blank">🚀 Mở Web of Science và đăng nhập bằng tài khoản ở trên </a>
                 """,
                 unsafe_allow_html=True
             )
