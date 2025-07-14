@@ -663,7 +663,7 @@ if st.session_state['authenticated']:
 
             st.markdown("""
             **📌 Thông tin:** <br> User: check.journal.fms.tdtu@gmail.com <br> Pass: TDTu*88888888
-            """)
+            """, unsafe_allow_html=True)
 
             # Link mở tab mới
             wos_url = "https://www.webofscience.com"
