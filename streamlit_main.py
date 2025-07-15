@@ -141,7 +141,9 @@ if not st.session_state['authenticated']:
     allowed_emails_otp = [
         "@tdtu.edu.vn",
         "nguyenhuucan@gmail.com",
-        "nhc156@gmail.com"
+        "nhc156@gmail.com",
+        "c2200193@student.tdtu.edu.vn",
+        "tandatkhuu2k3@gmail.com"
                      ]
     if st.button("Tạo mã đăng nhập"):
         if any(allowed in user_email for allowed in allowed_emails_otp):
