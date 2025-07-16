@@ -305,7 +305,7 @@ def def_rank_by_name_or_issn(year):
             st.markdown(
                 f"""
                 <a href="{open_link_sjr}">
-                    \n🌐 Mở Website <span style="color: gold;">SJR</span> của tạp chí
+                    \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
                     <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
                     Chuyên ngành <span style="color: gold;">{row_chosen['Chuyên ngành']}</span>
                 </a>
@@ -316,7 +316,7 @@ def def_rank_by_name_or_issn(year):
             st.markdown(
                 f"""
                 <a href="{open_link_scopus}">
-                    \n🌐 Mở Website <span style="color: gold;">Scopus</span> của tạp chí
+                    \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
                     <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
                     ISSN: <span style="color: gold;">{issn}</span>
                 </a>
@@ -327,7 +327,7 @@ def def_rank_by_name_or_issn(year):
             st.markdown(
                 f"""
                 <a href="{open_link_wos}">
-                    \n🌐 Mở Website <span style="color: gold;">MJL-WoS</span> của tạp chí
+                    \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
                     <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
                     ISSN: <span style="color: gold;">{issn}</span>
                 </a>
