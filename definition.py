@@ -300,7 +300,7 @@ def def_rank_by_name_or_issn(year):
                 </a>
                 """,
                 unsafe_allow_html=True
-            ) 
+            )  
 
 
 def check_rank_by_name_1_category(id_category, year_check):
