@@ -338,7 +338,7 @@ def def_rank_by_name_or_issn(year):
             st.markdown(
                 f"""
                 <a href="{homepage_link_new}">
-                    \n🌐 Mở <span style="color: gold;">website</span> của tạp chí <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
+                    \n🌐 Mở website <span style="color: gold;">chính thức</span> của tạp chí <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
