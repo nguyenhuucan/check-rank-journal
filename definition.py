@@ -181,7 +181,48 @@ def check_rank_by_name_1_journal(search_name_journal, subject_area_category, yea
             f.result()
     return pd.DataFrame(rows, columns=['STT', 'Tên tạp chí', 'Hạng', 'Chỉ số Q', 'H-index', 'Vị trí', 'Tổng số tạp chí', 'Phần trăm', 'Top phần trăm', 'Chuyên ngành', 'ID Chuyên ngành', 'Trang', 'Ghi chú'])
 
+# === Bạn đã có sẵn hàm issn_to_all, ta giữ nguyên ===
+def issn_to_all(issn):
+    url = f"https://www.scimagojr.com/journalsearch.php?q={issn}&tip=sid&clean=0"
+    response = requests.get(url)
+    response.encoding = 'utf-8'
+    soup = BeautifulSoup(response.content, 'html.parser')
+    name_journal = soup.find('h1').text.strip() if soup.find('h1') else 'N/A'
+    country_tag = soup.find('h2', string='Country')
+    country = country_tag.find_next('a').text.strip() if country_tag else 'N/A'
+    treecategory_dict = {}
+    subject_area_div = soup.find('h2', string='Subject Area and Category')
+    if subject_area_div:
+        categories = subject_area_div.find_next_sibling('p').find_all('li', recursive=True)
+        for category in categories:
+            subcategories = category.find_all('li')
+            if subcategories:
+                for subcategory in subcategories:
+                    subcategory_name = subcategory.find('a').text.strip()
+                    subcategory_code = subcategory.find('a')['href'].split('=')[-1]
+                    treecategory_dict[subcategory_name] = subcategory_code
+            else:
+                category_name = category.find('a').text.strip()
+                category_code = category.find('a')['href'].split('=')[-1]
+                treecategory_dict[category_name] = category_code
+    subject_area_category = treecategory_dict
+    publisher_tag = soup.find('h2', string='Publisher')
+    publisher = publisher_tag.find_next('a').text.strip() if publisher_tag else 'N/A'
+    h_index_tag = soup.find('h2', string='H-Index')
+    h_index = h_index_tag.find_next('p', class_='hindexnumber').text.strip() if h_index_tag else 'N/A'
+    issn_tag = soup.find('h2', string='ISSN')
+    issn_info = issn_tag.find_next('p').text.strip() if issn_tag else 'N/A'
+    coverage_tag = soup.find('h2', string='Coverage')
+    coverage = coverage_tag.find_next('p').text.strip() if coverage_tag else 'N/A'
+    homepage_tag = soup.find('a', string='Homepage')
+    homepage_link = homepage_tag['href'] if homepage_tag else 'N/A'
+    how_to_publish_tag = soup.find('a', string='How to publish in this journal')
+    how_to_publish_link = how_to_publish_tag['href'] if how_to_publish_tag else 'N/A'
+    email_tag = soup.find('a', href=True, string=lambda x: x and '@' in x)
+    email_question_journal = email_tag['href'].replace('mailto:', '') if email_tag else 'N/A'
+    return name_journal, country, subject_area_category, publisher, h_index, issn_info, coverage, homepage_link, how_to_publish_link, email_question_journal
 
+# Check hạng 1 tạp chí    
 def def_rank_by_name_or_issn(year):
     st.subheader(f"Năm đang tra cứu — {year}")
     st.markdown('<p style="color: gold; font-weight: bold; margin: 0;">Bước 1</p>', unsafe_allow_html=True)
@@ -421,48 +462,6 @@ def def_list_all_subject(year):
     else:
         st.info("👉 Bấm **Tải danh sách chuyên ngành** để bắt đầu")
 
-# ------------------------------
-
-# === Bạn đã có sẵn hàm issn_to_all, ta giữ nguyên ===
-def issn_to_all(issn):
-    url = f"https://www.scimagojr.com/journalsearch.php?q={issn}&tip=sid&clean=0"
-    response = requests.get(url)
-    response.encoding = 'utf-8'
-    soup = BeautifulSoup(response.content, 'html.parser')
-    name_journal = soup.find('h1').text.strip() if soup.find('h1') else 'N/A'
-    country_tag = soup.find('h2', string='Country')
-    country = country_tag.find_next('a').text.strip() if country_tag else 'N/A'
-    treecategory_dict = {}
-    subject_area_div = soup.find('h2', string='Subject Area and Category')
-    if subject_area_div:
-        categories = subject_area_div.find_next_sibling('p').find_all('li', recursive=True)
-        for category in categories:
-            subcategories = category.find_all('li')
-            if subcategories:
-                for subcategory in subcategories:
-                    subcategory_name = subcategory.find('a').text.strip()
-                    subcategory_code = subcategory.find('a')['href'].split('=')[-1]
-                    treecategory_dict[subcategory_name] = subcategory_code
-            else:
-                category_name = category.find('a').text.strip()
-                category_code = category.find('a')['href'].split('=')[-1]
-                treecategory_dict[category_name] = category_code
-    subject_area_category = treecategory_dict
-    publisher_tag = soup.find('h2', string='Publisher')
-    publisher = publisher_tag.find_next('a').text.strip() if publisher_tag else 'N/A'
-    h_index_tag = soup.find('h2', string='H-Index')
-    h_index = h_index_tag.find_next('p', class_='hindexnumber').text.strip() if h_index_tag else 'N/A'
-    issn_tag = soup.find('h2', string='ISSN')
-    issn_info = issn_tag.find_next('p').text.strip() if issn_tag else 'N/A'
-    coverage_tag = soup.find('h2', string='Coverage')
-    coverage = coverage_tag.find_next('p').text.strip() if coverage_tag else 'N/A'
-    homepage_tag = soup.find('a', string='Homepage')
-    homepage_link = homepage_tag['href'] if homepage_tag else 'N/A'
-    how_to_publish_tag = soup.find('a', string='How to publish in this journal')
-    how_to_publish_link = how_to_publish_tag['href'] if how_to_publish_tag else 'N/A'
-    email_tag = soup.find('a', href=True, string=lambda x: x and '@' in x)
-    email_question_journal = email_tag['href'].replace('mailto:', '') if email_tag else 'N/A'
-    return name_journal, country, subject_area_category, publisher, h_index, issn_info, coverage, homepage_link, how_to_publish_link, email_question_journal
 
 # === Hàm chính ===
 def def_check_in_scopus_sjr_wos(year):
