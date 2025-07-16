@@ -260,11 +260,13 @@ def def_rank_by_name_or_issn(year):
                 st.session_state['df_rank'] = df_rank
                 st.session_state['id_scopus'] = id_scopus
                 st.session_state['issn'] = issn
-                st.session_state['publ'] = pub  
+                st.session_state['publ'] = pub
+                st.session_state['home'] = home
 
     df_rank = st.session_state.get('df_rank', pd.DataFrame())
     id_scopus = st.session_state.get('id_scopus')
     issn = st.session_state.get('issn')
+    homepage_link_new = st.session_state.get('home')
 
     if not df_rank.empty and id_scopus and issn:
         st.dataframe(df_rank, use_container_width=True, hide_index=True)
@@ -333,11 +335,9 @@ def def_rank_by_name_or_issn(year):
                 unsafe_allow_html=True
             )
 
-            name_journal_check, country, subject_area_category_check, publisher, h_index, issn_check, coverage, homepage_link, how_to_publish_link, email_question_journal = issn_to_all(id_scopus)
-
             st.markdown(
                 f"""
-                <a href="{homepage_link}">
+                <a href="{homepage_link_new}">
                     \n🌐 Mở <span style="color: gold;">website</span> của tạp chí
                 </a>
                 """,
