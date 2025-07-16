@@ -333,17 +333,9 @@ def def_rank_by_name_or_issn(year):
                 unsafe_allow_html=True
             )
             if home != 'N/A':
-                st.markdown(
-                    f"""
-                    <a href="{home}">
-                        \n🌐 Mở Website <span style="color: gold;">Homepage</span> của tạp chí
-                        <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> — 
-                        ISSN: <span style="color: gold;">{issn}</span>
-                    </a>
-                    """,
-                    unsafe_allow_html=True
+                st.info(
+                    f"🌐 **Homepage** của tạp chí **{row_chosen['Tên tạp chí']}**: [Mở tại đây](<{home}>)"
                 )
-
 
 def check_rank_by_name_1_category(id_category, year_check):
     row_add = []
