@@ -338,7 +338,8 @@ def def_rank_by_name_or_issn(year):
                 """,
                 unsafe_allow_html=True
             )
-            link_issn_portal = f"https://portal.issn.org/resource/ISSN/{issn}"
+            issn_first = issn.split(',')[0].strip()
+            link_issn_portal = f"https://portal.issn.org/resource/ISSN/{issn_first}"
             st.markdown(
                 f"""
                 <a href="{link_issn_portal}">
