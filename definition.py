@@ -332,10 +332,17 @@ def def_rank_by_name_or_issn(year):
                 """,
                 unsafe_allow_html=True
             )
-            if home != 'N/A':
-                st.info(
-                    f"🌐 **Homepage** của tạp chí **{row_chosen['Tên tạp chí']}**: [Mở tại đây](<{home}>)"
-                )
+
+            name_journal_check, country, subject_area_category_check, publisher, h_index, issn_check, coverage, homepage_link, how_to_publish_link, email_question_journal = issn_to_all(id_scopus)
+
+            st.markdown(
+                f"""
+                <a href="{homepage_link}">
+                    \n🌐 Mở <span style="color: gold;">website</span> của tạp chí
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
 
 def check_rank_by_name_1_category(id_category, year_check):
     row_add = []
