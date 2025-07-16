@@ -266,7 +266,7 @@ def def_rank_by_name_or_issn(year):
     df_rank = st.session_state.get('df_rank', pd.DataFrame())
     id_scopus = st.session_state.get('id_scopus')
     issn = st.session_state.get('issn')
-    homepage_link_new = st.session_state.get('home')
+    homepage_link_check = st.session_state.get('home')
 
     if not df_rank.empty and id_scopus and issn:
         st.dataframe(df_rank, use_container_width=True, hide_index=True)
