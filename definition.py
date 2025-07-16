@@ -344,7 +344,7 @@ def def_rank_by_name_or_issn(year):
                 f"""
                 <a href="{link_issn_portal}" target="_blank">
                     🌐 Mở Website <span style="color: gold;">ISSN Portal</span> của tạp chí
-                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> — kiểm tra nguồn gốc tạp chí trên hệ thống portal.issn.org
+                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> (kiểm tra nguồn gốc tạp chí trên hệ thống portal.issn.org)
                 </a>
                 """,
                 unsafe_allow_html=True
