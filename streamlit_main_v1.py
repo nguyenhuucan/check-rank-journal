@@ -28,7 +28,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Tải biến môi trường
+# Tải biến môi trường 
 load_dotenv()
 sender_email = os.getenv('EMAIL')
 sender_pass = os.getenv('EMAIL_PASS')
@@ -48,7 +48,7 @@ def send_login_log(user_email):
     log_msg = MIMEText(f"Email: {user_email}")
     log_msg['Subject'] = "Check-Journal: Đăng nhập mới"
     log_msg['From'] = sender_email
-    log_msg['To'] = "nhc156@gmail.com"
+    log_msg['To'] = "check.journal.fms.tdtu@gmail.com"
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(sender_email, sender_pass)
         server.send_message(log_msg)
@@ -141,7 +141,9 @@ if not st.session_state['authenticated']:
     allowed_emails_otp = [
         "@tdtu.edu.vn",
         "nguyenhuucan@gmail.com",
-        "nhc156@gmail.com"
+        "nhc156@gmail.com",
+        "c2200193@student.tdtu.edu.vn",
+        "tandatkhuu2k3@gmail.com"
                      ]
     if st.button("Tạo mã đăng nhập"):
         if any(allowed in user_email for allowed in allowed_emails_otp):
@@ -653,40 +655,30 @@ if st.session_state['authenticated']:
                     st.session_state['filename']
                 )
 
-        with subtabs[2]:  # Chỉ số tab tùy bạn đặt đúng
-            st.subheader("Truy cập Web of Science - Bản quyền - Mọi lúc - Mọi nơi")
+
+        with subtabs[2]:
+            
+            st.subheader("Truy cập Web of Science - Bản quyền TDTU - Mọi lúc - Mọi nơi")
+
+            username = "check.journal.fms.tdtu@gmail.com"
+            password = "TDTu*88888888"
 
             st.markdown("""
-            **📌 Thông tin:**  
-            Chức năng này đang cập nhật ...
+            **📌 Thông tin đăng nhập:** <br> User: check.journal.fms.tdtu@gmail.com <br> Pass: TDTu*88888888
             """, unsafe_allow_html=True)
 
-            # Gán thẳng user/pass
-            username = "nhc156@gmail.com"
-            password = "CheckJournal$4444"
-
-            if st.button("🚀 Mở Web of Science"):
-                # Gọi FastAPI backend
-                api_url = f"http://localhost:8000/login_wos?username={username}&password={password}"
-                with st.spinner("⏳ Đang đăng nhập và lấy SID..."):
-                    response = requests.get(api_url)
-                    if response.status_code == 200:
-                        data = response.json()
-                        sid = data.get("sid")
-                        if sid:
-                            wos_url = f"https://www.webofscience.com/wos/?SID={sid}"
-                            st.success("✅ Đã lấy SID thành công! Chuyển hướng ngay...")
-                            st.markdown(f"""
-                                <meta http-equiv="refresh" content="0;url={wos_url}">
-                            """, unsafe_allow_html=True)
-                        else:
-                            st.error("❌ Không tìm thấy SID.")
-                    else:
-                        st.error("❌ Lỗi đăng nhập hoặc API.")
+            # Link mở tab mới
+            wos_url = "https://www.webofscience.com"
+            st.markdown(
+                f"""
+                <a href="{wos_url}" target="_blank">🚀 Mở Web of Science và đăng nhập bằng tài khoản ở trên </a>
+                """,
+                unsafe_allow_html=True
+            )
 
 
         # ================================
-        # Tab con: Tài liệu nội bộ
+        # Tab con: Tài liệu nội bộ 
         # ================================
         with subtabs[3]:
             if user in allowed_see_ttk:
