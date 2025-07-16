@@ -297,17 +297,14 @@ def def_rank_by_name_or_issn(year):
                         )
             else:
                 st.warning("NXB chưa có dữ liệu. Vui lòng bấm 'Xem hạng' trước.")
-
-            #st.markdown(f"[🌐 Mở website SJR của tạp chí **{row_chosen['Tên tạp chí']}**, chuyên ngành **{row_chosen['Chuyên ngành']}**]({open_link_sjr})")
-            #st.markdown(f"[🌐 Mở website Scopus của tạp chí **{row_chosen['Tên tạp chí']}**, ISSN **{issn}**]({open_link_scopus})")
-            #st.markdown(f"[🌐 Mở Website MJL-WoS của tạp chí **{row_chosen['Tên tạp chí']}**, ISSN: **{issn}**](<{open_link_wos}>)")
             
             st.markdown(
                 f"""
                 <a href="{open_link_sjr}">
                     \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
                     <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
-                    Chuyên ngành <span style="color: gold;">{row_chosen['Chuyên ngành']}</span>
+                    Chuyên ngành <span style="color: gold;">{row_chosen['Chuyên ngành']}</span>  —
+                    ISSN: <span style="color: gold;">{issn}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
