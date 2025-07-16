@@ -242,7 +242,7 @@ def def_rank_by_name_or_issn(year):
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus}"
             open_link_wos = f"https://mjl.clarivate.com:/search-results?issn={issn}&hide_exact_match_fl=true"
 
-            now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).strftime("%Hh%M ngày %d/%m/%Y")
+            now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh")).strftime("%Hh%M ngày %d/%m/%Y") 
             publ = st.session_state.get('publ')
             if publ:
                 st.info(
