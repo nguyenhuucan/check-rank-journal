@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 from choose_year import def_year_choose
 from definition import def_rank_by_name_or_issn, def_list_all_subject, def_check_in_scopus_sjr_wos, def_rank_by_rank_key, def_rank_by_Q_key
 
-# thay đổi định dạng link 
+# thay đổi định dạng link  
 st.markdown(
     """
     <style>
