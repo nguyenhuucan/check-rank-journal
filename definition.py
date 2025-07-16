@@ -343,7 +343,7 @@ def def_rank_by_name_or_issn(year):
             st.markdown(
                 f"""
                 <a href="{link_issn_portal}">
-                    \n🌐 Mở website <span style="color: gold;">ISSN Portal</span> của tạp chí <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
+                    \n🌐 Mở website <span style="color: gold;">ISSN Portal</span> của tạp chí <span style="color: gold;">{row_chosen['Tên tạp chí']} (kiểm tra nguồn gốc mã ISSN của tạp chí trên https://portal.issn.org)</span>
                 </a>
                 """,
                 unsafe_allow_html=True
