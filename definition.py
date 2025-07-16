@@ -338,6 +338,15 @@ def def_rank_by_name_or_issn(year):
                 """,
                 unsafe_allow_html=True
             )
+            link_issn_portal = f"https://portal.issn.org/resource/ISSN/{issn}"
+            st.markdown(
+                f"""
+                <a href="{link_issn_portal}">
+                    \n🌐 Mở website <span style="color: gold;">ISSN Portal</span> của tạp chí <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
 
 def check_rank_by_name_1_category(id_category, year_check):
     row_add = []
