@@ -314,8 +314,7 @@ def def_rank_by_name_or_issn(year):
                 f"""
                 <a href="{open_link_scopus}">
                     \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
-                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
-                    ISSN: <span style="color: gold;">{issn}</span>
+                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
@@ -325,8 +324,7 @@ def def_rank_by_name_or_issn(year):
                 f"""
                 <a href="{open_link_wos}">
                     \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
-                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span> —
-                    ISSN: <span style="color: gold;">{issn}</span>
+                    <span style="color: gold;">{row_chosen['Tên tạp chí']}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
