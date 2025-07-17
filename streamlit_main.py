@@ -109,7 +109,7 @@ st.markdown(
 # Giao diện tối
 st.set_page_config(
     page_title="Ứng dụng Check - Journal",
-    page_icon="🅲",
+    page_icon="❤️",
     layout="wide",
     initial_sidebar_state="auto"
 )
