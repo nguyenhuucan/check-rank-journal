@@ -74,7 +74,7 @@ st.markdown(
     f"""
     <style>
     .block-container {{
-        padding-top: 0rem;
+        padding-top: 5em;
     }}
 
     h1 {{
