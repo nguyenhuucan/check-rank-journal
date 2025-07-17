@@ -107,27 +107,11 @@ st.markdown(
 # End tiêu đè + logo
 
 # Giao diện tối
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #0e1117 !important;  /* Nền tối */
-        color: #ffffff !important;             /* Chữ trắng */
-    }
-    /* Đổi màu các khung widget */
-    .stButton>button, .stTextInput>div>input, .stSelectbox>div>div>div {
-        background-color: #1f222a !important;
-        color: white !important;
-        border: 1px solid #3e3e3e !important;
-    }
-    /* Đổi màu sidebar nếu dùng */
-    section[data-testid="stSidebar"] {
-        background-color: #1f222a !important;
-        color: white !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
+st.set_page_config(
+    page_title="Ứng dụng Check - Journal",
+    page_icon="✅",
+    layout="wide",
+    initial_sidebar_state="auto"
 )
 # End giao diện tối
 
