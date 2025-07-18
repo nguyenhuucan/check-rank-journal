@@ -470,7 +470,7 @@ def def_list_all_subject(year):
 
 
 def def_check_in_scopus_sjr_wos(year):
-    st.subheader(f"Phân loại tạp chí có thuộc SJR + SCOPUS + WOS — {year}")
+    st.subheader(f"Phân loại tạp chí có thuộc SJR + SCOPUS + WOS")
 
     keyword = st.text_input("Nhập tên hoặc ISSN của tạp chí")
 
