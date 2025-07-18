@@ -563,20 +563,18 @@ def def_check_in_scopus_sjr_wos(year):
             open_link_scopus = f"<https://www.scopus.com/sourceid/{id_scopus_choose}>"
             open_link_wos = f"<https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal>"
 
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                #st.markdown(f"[🌐 Mở SJR]({open_link_sjr})")
-                st.markdown(
-                    f"""
-                    <a href="{open_link_sjr}">
-                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí <span style="color: gold;">{name_journal_check}</span>
-                    </a>
-                    """,unsafe_allow_html=True
-                            )
-            with col2:
-                st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
-            with col3:
-                st.markdown(f"[🌐 Mở MJL-WOS]({open_link_wos})")
+            st.markdown(
+                f"""
+                <a href="{open_link_sjr}">
+                    \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí <span style="color: gold;">{name_journal_check}</span>
+                </a>
+                """,unsafe_allow_html=True
+                        )
+
+            st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
+
+            st.markdown(f"[🌐 Mở MJL-WOS]({open_link_wos})")
+            
             link_homepage = detail['homepage_link']
             st.info(
                 f"✅ **{detail['name_journal_check']}**  ➖  **Quốc gia**: {detail['country']}  ➖  "
