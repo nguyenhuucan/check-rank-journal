@@ -557,7 +557,7 @@ def def_check_in_scopus_sjr_wos(year):
         if 'journal_detail' in st.session_state:
             detail = st.session_state['journal_detail']
             issn_check = detail["issn_check"]
-            name_journal_check = detail["name_journal_check"]
+            #name_journal_check = detail["name_journal_check"]
 
             open_link_sjr = f"<https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0>"
             open_link_scopus = f"<https://www.scopus.com/sourceid/{id_scopus_choose}>"
