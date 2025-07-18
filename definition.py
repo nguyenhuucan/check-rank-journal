@@ -469,7 +469,6 @@ def def_list_all_subject(year):
         st.info("👉 Bấm **Tải danh sách chuyên ngành** để bắt đầu")
 
 
-# === Hàm chính ===
 def def_check_in_scopus_sjr_wos(year):
     st.subheader(f"Phân loại tạp chí thuộc SJR - SCOPUS - WOS")
 
@@ -479,35 +478,32 @@ def def_check_in_scopus_sjr_wos(year):
 
     if search_clicked:
         st.session_state['keyword_journal'] = keyword.strip()
-        st.session_state['search_done'] = False  # Reset flag để ép chạy lại tìm kiếm mới
+        st.session_state['search_done'] = False  # Reset flag tìm kiếm
 
-    # Chỉ tìm kiếm khi bấm nút
     if 'keyword_journal' in st.session_state and not st.session_state.get('search_done', False):
         try:
             with st.spinner(f"Đang tìm tạp chí theo '{st.session_state['keyword_journal']}'..."):
                 df_1 = find_title_or_issn(st.session_state['keyword_journal'])
 
-                # Xử lý dòng ISSN lỗi
+                # Loại bỏ dòng lỗi ISSN
                 empty_indices = df_1[df_1['ISSN'].str.len() < 4].index.tolist()
                 df_1.drop(index=empty_indices, inplace=True)
 
-                # Lưu lại
                 st.session_state['df_journals'] = df_1
                 st.session_state['search_done'] = True
 
         except Exception as e:
             st.warning(f"⚠️ Cảnh báo lỗi >>> {str(e)}")
 
-    # Nếu đã có dữ liệu thì LUÔN hiển thị bảng + selectbox
     if st.session_state.get('search_done', False):
         df_1 = st.session_state['df_journals']
 
         column_show = ['STT', 'Tên tạp chí', 'ISSN', 'Nhà xuất bản', 'ID Scopus']
-        st.dataframe(df_1[column_show],hide_index=True)
+        st.dataframe(df_1[column_show], use_container_width=True, hide_index=True)
 
         options = [f"{a} - {b} - {c} - {d}"
                    for a, b, c, d in zip(df_1['STT'], df_1['Tên tạp chí'],
-                                            df_1['ISSN'], df_1['Nhà xuất bản'])]
+                                         df_1['ISSN'], df_1['Nhà xuất bản'])]
 
         selected_option = st.selectbox(
             f"Đã tìm thấy {len(df_1)} kết quả - Chọn tạp chí muốn tra cứu",
@@ -519,122 +515,118 @@ def def_check_in_scopus_sjr_wos(year):
         selected_row = df_1.iloc[int(choose_stt) - 1]
         id_scopus_choose = selected_row['ID Scopus']
 
-        # Chỉ gọi issn_to_all khi STT thay đổi
-        if 'selected_stt' not in st.session_state or st.session_state['selected_stt'] != choose_stt:
-            try:
-                with st.spinner("🔄 Đang cập nhật ..."):
-                    (
-                        name_journal_check,
-                        country,
-                        subject_area_category_check,
-                        publisher,
-                        h_index,
-                        issn_check,
-                        coverage,
-                        homepage_link,
-                        how_to_publish_link,
-                        email_question_journal
-                    ) = issn_to_all(id_scopus_choose)
+        # Nút Tra cứu
+        tra_cuu_clicked = st.button("📑 Tra cứu thông tin chi tiết")
 
-                    st.session_state['journal_detail'] = {
-                        "name_journal_check": name_journal_check,
-                        "country": country,
-                        "subject_area_category_check": subject_area_category_check,
-                        "publisher": publisher,
-                        "h_index": h_index,
-                        "issn_check": issn_check,
-                        "coverage": coverage,
-                        "homepage_link": homepage_link,
-                        "how_to_publish_link": how_to_publish_link,
-                        "email_question_journal": email_question_journal
-                    }
-                    st.session_state['selected_stt'] = choose_stt  # Ghi nhớ lựa chọn
+        if tra_cuu_clicked:
+            st.session_state['show_detail'] = True
+            st.session_state['selected_stt'] = choose_stt
+            st.session_state['search_detail_done'] = False  # Reset flag để ép tra cứu lại
 
-            except Exception as e:
-                st.warning(f"⚠️ Cảnh báo lỗi >>> {str(e)}")
+        if st.session_state.get('show_detail', False):
+            if not st.session_state.get('search_detail_done', False) or st.session_state['selected_stt'] != choose_stt:
+                try:
+                    with st.spinner("🔄 Đang tra cứu thông tin chi tiết..."):
+                        (
+                            name_journal_check,
+                            country,
+                            subject_area_category_check,
+                            publisher,
+                            h_index,
+                            issn_check,
+                            coverage,
+                            homepage_link,
+                            how_to_publish_link,
+                            email_question_journal
+                        ) = issn_to_all(id_scopus_choose)
 
-        # Luôn lấy thông tin đã tra
-        if 'journal_detail' in st.session_state:
-            detail = st.session_state['journal_detail']
-            issn_check = detail["issn_check"]
-            name_journal_check = detail["name_journal_check"]
-            subject_area_category_check = detail["subject_area_category_check"]
-            homepage_link = detail['homepage_link']
+                        st.session_state['journal_detail'] = {
+                            "name_journal_check": name_journal_check,
+                            "country": country,
+                            "subject_area_category_check": subject_area_category_check,
+                            "publisher": publisher,
+                            "h_index": h_index,
+                            "issn_check": issn_check,
+                            "coverage": coverage,
+                            "homepage_link": homepage_link,
+                            "how_to_publish_link": how_to_publish_link,
+                            "email_question_journal": email_question_journal
+                        }
+                        st.session_state['search_detail_done'] = True
 
-            open_link_sjr = f"https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0"
-            open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
-            open_link_wos = f"https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal"
+                except Exception as e:
+                    st.warning(f"⚠️ Cảnh báo lỗi khi tra cứu >>> {str(e)}")
 
-            st.markdown(f"""\nBạn đang xem thông tin của tạp chí <span style="color: gold;">{name_journal_check}</span> với mã số ISSN là <span style="color: gold;">{issn_check}</span>""",
-            unsafe_allow_html=True
-                        )
+            if st.session_state.get('journal_detail', None):
+                detail = st.session_state['journal_detail']
+                issn_check = detail["issn_check"]
+                name_journal_check = detail["name_journal_check"]
+                subject_area_category_check = detail["subject_area_category_check"]
+                homepage_link = detail['homepage_link']
 
-            col1, col2 = st.columns(2)
-            with col1:
+                open_link_sjr = f"https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0"
+                open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
+                open_link_wos = f"https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal"
+
                 st.markdown(
-                    f"""
-                    <a href="{open_link_sjr}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí đang xem
-                    </a>
-                    """,
+                    f"""Bạn đang xem thông tin của tạp chí <span style="color: gold;">{name_journal_check}</span> với mã số ISSN là <span style="color: gold;">{issn_check}</span>""",
                     unsafe_allow_html=True
                 )
 
-                st.markdown(
-                    f"""
-                    <a href="{open_link_scopus}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí đang xem
-                    </a>
-                    """,
-                    unsafe_allow_html=True
-                )
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.markdown(
+                        f"""
+                        <a href="{open_link_sjr}" target="_blank">
+                            🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí đang xem
+                        </a>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.markdown(
+                        f"""
+                        <a href="{open_link_scopus}" target="_blank">
+                            🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí đang xem
+                        </a>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.markdown(
+                        f"""
+                        <a href="{open_link_wos}" target="_blank">
+                            🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí đang xem
+                        </a>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                    st.markdown(
+                        f"""
+                        <a href="{homepage_link}" target="_blank">
+                            🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí đang xem
+                        </a>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                with col2:
+                    st.markdown(f""" ✅ Quốc gia: <span style="color: gold;">{detail['country']}</span> """,
+                                unsafe_allow_html=True)
+                    st.markdown(f""" ✅ Nhà xuất bản: <span style="color: gold;">{detail['publisher']}</span> """,
+                                unsafe_allow_html=True)
+                    st.markdown(f""" ✅ H-index: <span style="color: gold;">{detail['h_index']}</span> """,
+                                unsafe_allow_html=True)
+
+                    df_subjects = pd.DataFrame(
+                        [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
+                        columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
+                    )
+                    st.markdown(f""" ✅ Số chuyên ngành hẹp: <span style="color: gold;">{len(df_subjects)}</span>""",
+                                unsafe_allow_html=True)
 
                 st.markdown(
-                    f"""
-                    <a href="{open_link_wos}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí đang xem
-                    </a>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-                st.markdown(
-                    f"""
-                    <a href="{homepage_link}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí đang xem
-                    </a>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-            with col2:
-                st.markdown(f""" ✅ Quốc gia: <span style="color: gold;">{detail['country']}</span> """,
-                unsafe_allow_html=True
-                            )
-            
-                st.markdown(f""" ✅ Nhà xuất bản: <span style="color: gold;">{detail['publisher']}</span> """,
-                unsafe_allow_html=True
-                            )
-
-                st.markdown(f""" ✅ H-index: <span style="color: gold;">{detail['h_index']}</span> """,
-                unsafe_allow_html=True
-                            )
-
-                # Tạo DataFrame
-                df_subjects = pd.DataFrame(
-                    [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
-                    columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
-                )
-                st.markdown(f""" ✅ Số chuyên ngành hẹp: <span style="color: gold;">{len(df_subjects)}</span>""",
-                unsafe_allow_html=True
-                            )
-
-            # Hiển thị bằng Streamlit
-            st.markdown(f"""\nChi tiết <span style="color: gold;">{len(df_subjects)}</span> chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""",
-            unsafe_allow_html=True
-                        )
-
-            st.dataframe(df_subjects, use_container_width=True, hide_index=True)
+                    f"""Chi tiết <span style="color: gold;">{len(df_subjects)}</span> chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""",
+                    unsafe_allow_html=True)
+                st.dataframe(df_subjects, use_container_width=True, hide_index=True)
 
 
 # Tab 4 -----------------------
