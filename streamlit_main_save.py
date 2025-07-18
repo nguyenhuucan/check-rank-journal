@@ -765,7 +765,7 @@ if st.session_state['authenticated']:
         st.markdown("""
         **Tên ứng dụng:** Ứng dụng Check-Journal 
         
-        **Phiên bản:** 25.07.02
+        **Phiên bản:** 25.07.15
 
         **Tác giả:** Nguyễn Hữu Cần (Khoa Toán - Thống kê, TDTU)  
 
