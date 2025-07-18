@@ -559,6 +559,7 @@ def def_check_in_scopus_sjr_wos(year):
             issn_check = detail["issn_check"]
             name_journal_check = detail["name_journal_check"]
             subject_area_category_check = detail["subject_area_category_check"]
+            homepage_link = detail['homepage_link']
 
             open_link_sjr = f"https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0"
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
@@ -597,21 +598,20 @@ def def_check_in_scopus_sjr_wos(year):
                     unsafe_allow_html=True
                 )
 
+                st.markdown(
+                    f"""
+                    <a href="{homepage_link}" target="_blank">
+                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
+                        <span style="color: gold;">{name_journal_check}</span>
+                    </a>
+                    """,
+                    unsafe_allow_html=True
+                )
+
             with col2:
                 st.markdown(
                     f""" **Quốc gia**: {detail['country']} """)
             
-            link_homepage = detail['homepage_link']
-            
-            st.markdown(
-                f"""
-                <a href="{link_homepage}" target="_blank">
-                    \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
-                    <span style="color: gold;">{name_journal_check}</span>
-                </a>
-                """,
-                unsafe_allow_html=True
-            )
 
             # Tạo DataFrame
             df_subjects = pd.DataFrame(
