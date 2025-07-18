@@ -601,7 +601,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{homepage_link}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
+                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí xxx
                         <span style="color: gold;">{name_journal_check}</span>
                     </a>
                     """,
