@@ -564,35 +564,39 @@ def def_check_in_scopus_sjr_wos(year):
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
             open_link_wos = f"https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal"
 
-            st.markdown(
-                f"""
-                <a href="{open_link_sjr}" target="_blank">
-                    \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
-                    <span style="color: gold;">{name_journal_check}</span>
-                </a>
-                """,
-                unsafe_allow_html=True
-            )
+            col1, col2 = st.columns(2)
 
-            st.markdown(
-                f"""
-                <a href="{open_link_scopus}" target="_blank">
-                    \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
-                    <span style="color: gold;">{name_journal_check}</span>
-                </a>
-                """,
-                unsafe_allow_html=True
-            )
+            with col1:
+                st.markdown(
+                    f"""
+                    <a href="{open_link_sjr}" target="_blank">
+                        🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
+                        <span style="color: gold;">{name_journal_check}</span>
+                    </a>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-            st.markdown(
-                f"""
-                <a href="{open_link_wos}" target="_blank">
-                    \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
-                    <span style="color: gold;">{name_journal_check}</span>
-                </a>
-                """,
-                unsafe_allow_html=True
-            )
+                st.markdown(
+                    f"""
+                    <a href="{open_link_scopus}" target="_blank">
+                        🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
+                        <span style="color: gold;">{name_journal_check}</span>
+                    </a>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+            with col2:
+                st.markdown(
+                    f"""
+                    <a href="{open_link_wos}" target="_blank">
+                        🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
+                        <span style="color: gold;">{name_journal_check}</span>
+                    </a>
+                    """,
+                    unsafe_allow_html=True
+                )
             
             link_homepage = detail['homepage_link']
             
