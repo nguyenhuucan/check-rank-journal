@@ -565,8 +565,17 @@ def def_check_in_scopus_sjr_wos(year):
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
             open_link_wos = f"https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal"
 
+            st.markdown(
+                f"""
+                <a href="{homepage_link}" target="_blank">
+                    \nBạn đang xem thông tin của tạp chí
+                    <span style="color: gold;">{name_journal_check}</span>
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
+            
             col1, col2 = st.columns(2)
-
             with col1:
                 st.markdown(
                     f"""
