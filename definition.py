@@ -608,7 +608,7 @@ def def_check_in_scopus_sjr_wos(year):
 
             # Tạo DataFrame
             df_subjects = pd.DataFrame(
-                [(i + 1, name, id) for i, (name, id) in enumerate(link_homepage.items())],
+                [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
                 columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
             )
 
