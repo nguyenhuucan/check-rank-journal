@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 from choose_year import def_year_choose
 from definition import def_rank_by_name_or_issn, def_list_all_subject, def_check_in_scopus_sjr_wos, def_rank_by_rank_key, def_rank_by_Q_key
 
-# thay đổi định dạng link 
+# thay đổi định dạng link  
 st.markdown(
     """
     <style>
@@ -74,7 +74,7 @@ st.markdown(
     f"""
     <style>
     .block-container {{
-        padding-top: 0rem;
+        padding-top: 2em;
     }}
 
     h1 {{
@@ -104,8 +104,17 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 # End tiêu đè + logo
+
+# Giao diện tối
+st.set_page_config(
+    page_title="Ứng dụng Check - Journal",
+    page_icon="❤️",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+# End giao diện tối
+
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
