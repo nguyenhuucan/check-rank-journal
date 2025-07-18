@@ -581,7 +581,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_scopus}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
+                        \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
                         <span style="color: gold;">{name_journal_check}</span>
                     </a>
                     """,
@@ -591,7 +591,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_wos}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
+                        \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
                         <span style="color: gold;">{name_journal_check}</span>
                     </a>
                     """,
@@ -620,6 +620,11 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(f""" **✅ H-index**: <span style="color: gold;">{detail['h_index']}</span> """,
                 unsafe_allow_html=True
                             )
+
+                st.markdown(f""" **✅ Danh sách chuyên ngành hẹp**:""",
+                unsafe_allow_html=True
+                            )
+
             # Tạo DataFrame
             df_subjects = pd.DataFrame(
                 [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
