@@ -559,7 +559,7 @@ def def_check_in_scopus_sjr_wos(year):
             issn_check = detail["issn_check"]
             name_journal_check = detail["name_journal_check"]
 
-            open_link_sjr = f"<https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0>"
+            open_link_sjr = f"https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0"
             open_link_scopus = f"<https://www.scopus.com/sourceid/{id_scopus_choose}>"
             open_link_wos = f"<https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal>"
 
