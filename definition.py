@@ -606,6 +606,16 @@ def def_check_in_scopus_sjr_wos(year):
                 unsafe_allow_html=True
             )
 
+            # Tạo DataFrame
+            df_subjects = pd.DataFrame(
+                [(i + 1, name, id) for i, (name, id) in enumerate(link_homepage.items())],
+                columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
+            )
+
+            # Hiển thị bằng Streamlit
+            st.write(f"### 🌐 Các chuyên ngành hẹp của tạp chí {name_journal_check}")
+            st.dataframe(df_subjects, use_container_width=True)
+
             st.info(
                 f"✅ **{detail['name_journal_check']}**  ➖  **Quốc gia**: {detail['country']}  ➖  "
                 f"**NXB**: {detail['publisher']}  ➖  **H-Index**: {detail['h_index']}  ➖  "
