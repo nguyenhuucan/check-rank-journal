@@ -566,16 +566,32 @@ def def_check_in_scopus_sjr_wos(year):
             st.markdown(
                 f"""
                 <a href="{open_link_sjr}" target="_blank">
-                    🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
+                    \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
                     <span style="color: gold;">{name_journal_check}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
             )
 
-            st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
+            st.markdown(
+                f"""
+                <a href="{open_link_scopus}" target="_blank">
+                    \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
+                    <span style="color: gold;">{name_journal_check}</span>
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
 
-            st.markdown(f"[🌐 Mở MJL-WOS]({open_link_wos})")
+            st.markdown(
+                f"""
+                <a href="{open_link_wos}" target="_blank">
+                    \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
+                    <span style="color: gold;">{name_journal_check}</span>
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
             
             link_homepage = detail['homepage_link']
             st.info(
