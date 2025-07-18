@@ -730,7 +730,7 @@ def def_rank_by_rank_key(year):
 
 
 def def_rank_by_Q_key(year):
-    st.subheader(f"🔎 Lọc tạp chí theo Từ khoá chuyên ngành và Chỉ số Q — {year}")
+    st.subheader(f"Lọc tạp chí theo Từ khoá chuyên ngành và Chỉ số Q — {year}")
 
     # ✅ LUÔN CÓ: DÙ BẤM TẢI FILE THÌ VẪN CÒN
     column_show = [
