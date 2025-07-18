@@ -587,7 +587,6 @@ def def_check_in_scopus_sjr_wos(year):
                     unsafe_allow_html=True
                 )
 
-            with col2:
                 st.markdown(
                     f"""
                     <a href="{open_link_wos}" target="_blank">
@@ -597,6 +596,10 @@ def def_check_in_scopus_sjr_wos(year):
                     """,
                     unsafe_allow_html=True
                 )
+
+            with col2:
+                st.markdown(
+                    f""" **Quốc gia**: {detail['country']} """)
             
             link_homepage = detail['homepage_link']
             
