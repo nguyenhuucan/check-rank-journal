@@ -609,8 +609,9 @@ def def_check_in_scopus_sjr_wos(year):
                 )
 
             with col2:
-                st.markdown(
-                    f""" **Quốc gia**: <span style="color: gold;">{detail['country']}</span> """)
+                st.markdown(f""" **Quốc gia**: <span style="color: gold;">{detail['country']}</span> """,
+                unsafe_allow_html=True
+                            )
             
 
             # Tạo DataFrame
