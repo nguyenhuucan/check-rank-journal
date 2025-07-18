@@ -557,18 +557,18 @@ def def_check_in_scopus_sjr_wos(year):
         if 'journal_detail' in st.session_state:
             detail = st.session_state['journal_detail']
             issn_check = detail["issn_check"]
-            #name_journal_check = detail["name_journal_check"]
 
             open_link_sjr = f"<https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0>"
             open_link_scopus = f"<https://www.scopus.com/sourceid/{id_scopus_choose}>"
             open_link_wos = f"<https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal>"
 
-
-
-            st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
-
-            st.markdown(f"[🌐 Mở MJL-WOS]({open_link_wos})")
-
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.markdown(f"[🌐 Mở SJR]({open_link_sjr})")
+            with col2:
+                st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
+            with col3:
+                st.markdown(f"[🌐 Mở MJL-WOS]({open_link_wos})")
             link_homepage = detail['homepage_link']
             st.info(
                 f"✅ **{detail['name_journal_check']}**  ➖  **Quốc gia**: {detail['country']}  ➖  "
