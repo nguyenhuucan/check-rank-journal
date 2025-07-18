@@ -625,23 +625,14 @@ def def_check_in_scopus_sjr_wos(year):
                     [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
                     columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
                 )
-
                 st.markdown(f""" ✅ Tạp chí đang xem thuộc {len(df_subjects)} chuyên ngành hẹp bên dưới đây:""",
                 unsafe_allow_html=True
                             )
-
-
 
             # Hiển thị bằng Streamlit
             st.write(f"🌐 Các chuyên ngành hẹp của tạp chí {name_journal_check}")
             st.dataframe(df_subjects, use_container_width=True)
 
-            st.info(
-                f"✅ **{detail['name_journal_check']}**  ➖  **Quốc gia**: {detail['country']}  ➖  "
-                f"**NXB**: {detail['publisher']}  ➖  **H-Index**: {detail['h_index']}  ➖  "
-                f"**Chuyên ngành hẹp**: "
-                f"[Xem tại đây](<{subject_area_category_check}>)"
-            )
 
 # Tab 4 -----------------------
 
