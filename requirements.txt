@@ -8,3 +8,5 @@ xlsxwriter
 joblib
 streamlit-autorefresh
 pyperclip
+fastapi
+uvicorn[standard]
