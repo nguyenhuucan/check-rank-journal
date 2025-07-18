@@ -601,7 +601,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{homepage_link}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí xxx
+                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
                         <span style="color: gold;">{name_journal_check}</span>
                     </a>
                     """,
@@ -610,7 +610,7 @@ def def_check_in_scopus_sjr_wos(year):
 
             with col2:
                 st.markdown(
-                    f""" **Quốc gia**: {detail['country']} """)
+                    f""" **Quốc gia**: <span style="color: gold;">{detail['country']}</span> """)
             
 
             # Tạo DataFrame
