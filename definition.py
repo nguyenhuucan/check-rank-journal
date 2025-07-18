@@ -569,23 +569,12 @@ def def_check_in_scopus_sjr_wos(year):
             unsafe_allow_html=True
                         )
 
-            st.markdown(
-                f"""
-                <a href="{homepage_link}" target="_blank">
-                    \nBạn đang xem thông tin của tạp chí <span style="color: gold;">{name_journal_check}</span>  ➖ ISSN:
-                    <span style="color: gold;">{issn_check}</span>
-                </a>
-                """,
-                unsafe_allow_html=True
-            )
-            
             col1, col2 = st.columns(2)
             with col1:
                 st.markdown(
                     f"""
                     <a href="{open_link_sjr}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
-                        <span style="color: gold;">{name_journal_check}</span>
+                        \n🌐 Mở website <span style="color: gold;">SJR</span>
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -594,8 +583,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_scopus}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí
-                        <span style="color: gold;">{name_journal_check}</span>
+                        \n🌐 Mở website <span style="color: gold;">Scopus</span>
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -604,8 +592,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_wos}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí
-                        <span style="color: gold;">{name_journal_check}</span>
+                        \n🌐 Mở website <span style="color: gold;">MJL-WoS</span>
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -614,8 +601,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{homepage_link}" target="_blank">
-                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
-                        <span style="color: gold;">{name_journal_check}</span>
+                        \n🌐 Mở website <span style="color: gold;">HomePage</span>
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -634,7 +620,7 @@ def def_check_in_scopus_sjr_wos(year):
                 unsafe_allow_html=True
                             )
 
-                st.markdown(f""" **✅ Danh sách chuyên ngành hẹp**:""",
+                st.markdown(f""" **✅ Danh sách chuyên ngành hẹp xem bên dưới**:""",
                 unsafe_allow_html=True
                             )
 
