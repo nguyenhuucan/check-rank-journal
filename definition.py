@@ -612,7 +612,7 @@ def def_check_in_scopus_sjr_wos(year):
                 f"""Chi tiết <span style="color: gold;">{len(df_subjects)}</span> chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""",
                 unsafe_allow_html=True
             )
-            st.dataframe(df_subjects, use_container_width=True, hide_index=True)
+            st.dataframe(df_subjects, use_container_width=True, hide_index=True) 
 
 
 
