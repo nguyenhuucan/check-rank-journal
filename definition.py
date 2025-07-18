@@ -571,7 +571,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_sjr}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
+                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí
                         <span style="color: gold;">{name_journal_check}</span>
                     </a>
                     """,
