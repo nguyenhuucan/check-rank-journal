@@ -557,6 +557,7 @@ def def_check_in_scopus_sjr_wos(year):
         if 'journal_detail' in st.session_state:
             detail = st.session_state['journal_detail']
             issn_check = detail["issn_check"]
+            name_journal_check = detail["name_journal_check"]
 
             open_link_sjr = f"<https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0>"
             open_link_scopus = f"<https://www.scopus.com/sourceid/{id_scopus_choose}>"
@@ -564,7 +565,14 @@ def def_check_in_scopus_sjr_wos(year):
 
             col1, col2, col3 = st.columns(3)
             with col1:
-                st.markdown(f"[🌐 Mở SJR]({open_link_sjr})")
+                #st.markdown(f"[🌐 Mở SJR]({open_link_sjr})")
+                st.markdown(
+                    f"""
+                    <a href="{open_link_sjr}">
+                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí <span style="color: gold;">{name_journal_check}</span>
+                    </a>
+                    """,unsafe_allow_html=True
+                            )
             with col2:
                 st.markdown(f"[🌐 Mở SCOPUS]({open_link_scopus})")
             with col3:
