@@ -608,19 +608,19 @@ def def_check_in_scopus_sjr_wos(year):
                 )
 
             with col2:
-                st.markdown(f""" **✅ Quốc gia**: <span style="color: gold;">{detail['country']}</span> """,
+                st.markdown(f""" ✅ Quốc gia: <span style="color: gold;">{detail['country']}</span> """,
                 unsafe_allow_html=True
                             )
             
-                st.markdown(f""" **✅ Nhà xuất bản**: <span style="color: gold;">{detail['publisher']}</span> """,
+                st.markdown(f""" ✅ Nhà xuất bản: <span style="color: gold;">{detail['publisher']}</span> """,
                 unsafe_allow_html=True
                             )
 
-                st.markdown(f""" **✅ H-index**: <span style="color: gold;">{detail['h_index']}</span> """,
+                st.markdown(f""" ✅ H-index: <span style="color: gold;">{detail['h_index']}</span> """,
                 unsafe_allow_html=True
                             )
 
-                st.markdown(f""" **✅ Danh sách chuyên ngành hẹp xem bên dưới**:""",
+                st.markdown(f""" ✅ Tạp chí đang xem thuộc {len(subject_area_category_check)} chuyên ngành hẹp bên dưới đây:""",
                 unsafe_allow_html=True
                             )
 
