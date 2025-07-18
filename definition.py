@@ -613,7 +613,13 @@ def def_check_in_scopus_sjr_wos(year):
                 unsafe_allow_html=True
                             )
             
+                st.markdown(f""" **✅ Nhà xuất bản**: <span style="color: gold;">{detail['publisher']}</span> """,
+                unsafe_allow_html=True
+                            )
 
+                st.markdown(f""" **✅ H-index**: <span style="color: gold;">{detail['h_index']}</span> """,
+                unsafe_allow_html=True
+                            )
             # Tạo DataFrame
             df_subjects = pd.DataFrame(
                 [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
