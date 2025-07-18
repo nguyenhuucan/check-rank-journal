@@ -567,7 +567,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_sjr}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí đang xem
+                        \n🌐 Mở website <span style="color: gold;">SJR</span> của tạp chí đang xem
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -575,7 +575,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_scopus}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí đang xem
+                        \n🌐 Mở website <span style="color: gold;">Scopus</span> của tạp chí đang xem
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -583,7 +583,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{open_link_wos}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí đang xem
+                        \n🌐 Mở website <span style="color: gold;">MJL-WoS</span> của tạp chí đang xem
                     </a>
                     """,
                     unsafe_allow_html=True
@@ -591,7 +591,7 @@ def def_check_in_scopus_sjr_wos(year):
                 st.markdown(
                     f"""
                     <a href="{homepage_link}" target="_blank">
-                        🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí đang xem
+                        \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí đang xem
                     </a>
                     """,
                     unsafe_allow_html=True
