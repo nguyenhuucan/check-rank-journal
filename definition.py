@@ -558,6 +558,7 @@ def def_check_in_scopus_sjr_wos(year):
             detail = st.session_state['journal_detail']
             issn_check = detail["issn_check"]
             name_journal_check = detail["name_journal_check"]
+            email_question_journal = detail["email_question_journal"]
 
             open_link_sjr = f"https://www.scimagojr.com/journalsearch.php?q={id_scopus_choose}&tip=sid&clean=0"
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
@@ -594,11 +595,21 @@ def def_check_in_scopus_sjr_wos(year):
             )
             
             link_homepage = detail['homepage_link']
+            
+            st.markdown(
+                f"""
+                <a href="{link_homepage}" target="_blank">
+                    \n🌐 Mở website <span style="color: gold;">HomePage</span> của tạp chí
+                    <span style="color: gold;">{name_journal_check}</span>
+                </a>
+                """,
+                unsafe_allow_html=True
+            )
             st.info(
                 f"✅ **{detail['name_journal_check']}**  ➖  **Quốc gia**: {detail['country']}  ➖  "
                 f"**NXB**: {detail['publisher']}  ➖  **H-Index**: {detail['h_index']}  ➖  "
-                f"**HomePage**: "
-                f"[Xem tại đây](<{link_homepage}>)"
+                f"**Liên hệ tạp chí**: "
+                f"[Xem tại đây](<{email_question_journal}>)"
             )
 
 # Tab 4 -----------------------
