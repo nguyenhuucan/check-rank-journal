@@ -568,8 +568,8 @@ def def_check_in_scopus_sjr_wos(year):
             st.markdown(
                 f"""
                 <a href="{homepage_link}" target="_blank">
-                    \nBạn đang xem thông tin của tạp chí
-                    <span style="color: gold;">{name_journal_check}</span>
+                    \nBạn đang xem thông tin của tạp chí <span style="color: gold;">{name_journal_check}</span>  ➖ ISSN:
+                    <span style="color: gold;">{issn_check}</span>
                 </a>
                 """,
                 unsafe_allow_html=True
