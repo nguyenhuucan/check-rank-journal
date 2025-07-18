@@ -779,7 +779,7 @@ if st.session_state['authenticated']:
                 df = pd.DataFrame(data)
 
                 st.title("Bảng Xếp Hạng Tạp Chí Theo Subject Category")
-                st.dataframe(df, use_container_width=True)
+                st.dataframe(df, use_container_width=True) 
             else:
                 st.warning("🔒 Chức năng này chỉ dành cho Admin")
 
