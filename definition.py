@@ -620,7 +620,7 @@ def def_check_in_scopus_sjr_wos(year):
                 unsafe_allow_html=True
                             )
 
-                st.markdown(f""" ✅ Tạp chí đang xem thuộc {len(subject_area_category_check)} chuyên ngành hẹp bên dưới đây:""",
+                st.markdown(f" ✅ Tạp chí đang xem thuộc {len(subject_area_category_check)} chuyên ngành hẹp bên dưới đây:",
                 unsafe_allow_html=True
                             )
 
