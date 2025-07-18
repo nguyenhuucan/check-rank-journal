@@ -565,7 +565,7 @@ def def_check_in_scopus_sjr_wos(year):
             open_link_scopus = f"https://www.scopus.com/sourceid/{id_scopus_choose}"
             open_link_wos = f"https://mjl.clarivate.com/search-results?issn={issn_check}&hide_exact_match_fl=true&utm_source=mjl&utm_medium=share-by-link&utm_campaign=search-results-share-this-journal"
 
-            st.markdown(f""" \nBạn đang xem thông tin của tạp chí <span style="color: gold;">{detail['country']}</span> ➖ ISSN: <span style="color: gold;">{issn_check}</span>""",
+            st.markdown(f"""\nBạn đang xem thông tin của tạp chí <span style="color: gold;">{name_journal_check}</span> ➖ với mã số ISSN là <span style="color: gold;">{issn_check}</span>""",
             unsafe_allow_html=True
                         )
 
