@@ -630,9 +630,7 @@ def def_check_in_scopus_sjr_wos(year):
                             )
 
             # Hiển thị bằng Streamlit
-            st.write(f"""\nChi tiết các chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""")
-
-            st.markdown(f"""\nChi tiết các chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""",
+            st.markdown(f"""\nChi tiết <span style="color: gold;">{len(df_subjects)}</span> chuyên ngành hẹp của tạp chí <span style="color: gold;">{name_journal_check}</span>""",
             unsafe_allow_html=True
                         )
 
