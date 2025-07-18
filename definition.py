@@ -625,7 +625,7 @@ def def_check_in_scopus_sjr_wos(year):
                     [(i + 1, name, id) for i, (name, id) in enumerate(subject_area_category_check.items())],
                     columns=["STT", "Chuyên ngành hẹp", "ID chuyên ngành hẹp"]
                 )
-                st.markdown(f""" ✅ Tạp chí đang xem thuộc {len(df_subjects)} chuyên ngành hẹp bên dưới đây:""",
+                st.markdown(f""" ✅ Số chuyên ngành hẹp <span style="color: gold;">{len(df_subjects)}</span>, xem chi tiết bên dưới""",
                 unsafe_allow_html=True
                             )
 
