@@ -793,7 +793,7 @@ if st.session_state['authenticated']:
     with tabs[7]:
         st.info("Thông tin ứng dụng")
         st.markdown("""
-        **Tên ứng dụng:** Ứng dụng Check-Journal 
+        **Tên ứng dụng:** Check-Journal 
         
         **Ngày khởi tạo:** 24/09/2024
 
