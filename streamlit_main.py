@@ -30,12 +30,22 @@ st.markdown(
 
 # Cấu hình giao diện
 st.set_page_config(
-    page_title="Check-Journal-V3",
+    page_title="Check-Journal-V2",
     page_icon="🔓",
     layout="wide",
     initial_sidebar_state="auto"
 )
 # End Cấu hình giao diện
+
+# Mã hoá logo đầu
+with open("fig/logo.png", "rb") as f:
+    data_left = f.read()
+    encoded_left = base64.b64encode(data_left).decode()
+
+# Mã hoá logo cuối
+with open("fig/ttk3.png", "rb") as f:
+    data_right = f.read()
+    encoded_right = base64.b64encode(data_right).decode()
 
 # Start tiêu đè + logo
 st.markdown(
@@ -74,8 +84,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
 # End tiêu đè + logo
 
 # Tải biến môi trường 
@@ -102,16 +110,6 @@ def send_login_log(user_email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(sender_email, sender_pass)
         server.send_message(log_msg)
-
-# Mã hoá logo đầu
-with open("fig/logo.png", "rb") as f:
-    data_left = f.read()
-    encoded_left = base64.b64encode(data_left).decode()
-
-# Mã hoá logo cuối
-with open("fig/ttk3.png", "rb") as f:
-    data_right = f.read()
-    encoded_right = base64.b64encode(data_right).decode()
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
