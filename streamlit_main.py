@@ -693,7 +693,7 @@ if st.session_state['authenticated']:
                 st.write("📌 Cách tính phần trăm xếp hạng theo quy định TDTU")
                 st.dataframe(df, use_container_width=True, hide_index=True)
 
-                st.write("📌 Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật
+                st.markdown("""📌 Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật
                 1️⃣ Có học vị tiến sĩ
                 2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo
                 3️⃣ Là tác giả đứng đầu/gửi bài:
@@ -703,7 +703,7 @@ if st.session_state['authenticated']:
                 5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến
                 6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật
                 7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường                           
-                ")
+                """)
                 st.write("📌 Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
