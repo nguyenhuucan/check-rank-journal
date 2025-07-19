@@ -76,12 +76,12 @@ with open("fig/ttk3.png", "rb") as f:
 st.markdown(
     f"""
     <style>
-    .block-container {{
-        padding-top: 2em;
+    .center-header {{
         text-align: center;
+        margin-bottom: 1em;
     }}
 
-    .logo-row {{
+    .center-header .logo-row {{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -89,26 +89,27 @@ st.markdown(
         margin-bottom: 0.5em;
     }}
 
-    .logo-row img {{
+    .center-header .logo-row img {{
         height: 2em;
     }}
 
-    h1 {{
+    .center-header h1 {{
         font-size: 2.5em;
-        line-height: 1.2;
         margin: 0;
     }}
     </style>
 
-    <div class="logo-row">
-        <img src="data:image/png;base64,{encoded_left}">
-        <img src="data:image/png;base64,{encoded_right}">
+    <div class="center-header">
+        <div class="logo-row">
+            <img src="data:image/png;base64,{encoded_left}">
+            <img src="data:image/png;base64,{encoded_right}">
+        </div>
+        <h1>Ứng dụng Check - Journal</h1>
     </div>
-
-    <h1>Ứng dụng Check - Journal</h1>
     """,
     unsafe_allow_html=True
 )
+
 
 # End tiêu đè + logo
 
