@@ -30,12 +30,53 @@ st.markdown(
 
 # Cấu hình giao diện
 st.set_page_config(
-    page_title="Check-Journal-V2",
+    page_title="Check-Journal-V3",
     page_icon="🔓",
     layout="wide",
     initial_sidebar_state="auto"
 )
 # End Cấu hình giao diện
+
+# Start tiêu đè + logo
+st.markdown(
+    f"""
+    <style>
+    .center-header {{
+        text-align: center;
+        margin-bottom: 1em;
+    }}
+
+    .center-header .logo-row {{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        margin-bottom: 0.5em;
+    }}
+
+    .center-header .logo-row img {{
+        height: 2em;
+    }}
+
+    .center-header h1 {{
+        font-size: 2.5em;
+        margin: 0;
+    }}
+    </style>
+
+    <div class="center-header">
+        <div class="logo-row">
+            <img src="data:image/png;base64,{encoded_left}">
+            <img src="data:image/png;base64,{encoded_right}">
+        </div>
+        <h1>Check - Journal</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+
+# End tiêu đè + logo
 
 # Tải biến môi trường 
 load_dotenv()
@@ -71,47 +112,6 @@ with open("fig/logo.png", "rb") as f:
 with open("fig/ttk3.png", "rb") as f:
     data_right = f.read()
     encoded_right = base64.b64encode(data_right).decode()
-
-# Start tiêu đè + logo
-st.markdown(
-    f"""
-    <style>
-    .center-header {{
-        text-align: center;
-        margin-bottom: 1em;
-    }}
-
-    .center-header .logo-row {{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2em;
-        margin-bottom: 0.5em;
-    }}
-
-    .center-header .logo-row img {{
-        height: 2em;
-    }}
-
-    .center-header h1 {{
-        font-size: 2.5em;
-        margin: 0;
-    }}
-    </style>
-
-    <div class="center-header">
-        <div class="logo-row">
-            <img src="data:image/png;base64,{encoded_left}">
-            <img src="data:image/png;base64,{encoded_right}">
-        </div>
-        <h1>Ứng dụng Check - Journal</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-
-# End tiêu đè + logo
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
