@@ -12,8 +12,9 @@ import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
-from choose_year import def_year_choose
+#from choose_year import def_year_choose
 from definition import def_rank_by_name_or_issn, def_list_all_subject, def_check_in_scopus_sjr_wos, def_rank_by_rank_key, def_rank_by_Q_key
+from definition import def_year_choose
 
 # Thay đổi định dạng link  
 st.markdown(
@@ -30,12 +31,61 @@ st.markdown(
 
 # Cấu hình giao diện
 st.set_page_config(
-    page_title="Check-Journal-V1",
-    page_icon="❤️",
+    page_title="Check-Journal",
+    page_icon="🔓",
     layout="wide",
     initial_sidebar_state="auto"
 )
 # End Cấu hình giao diện
+
+# Mã hoá logo đầu
+with open("fig/logo.png", "rb") as f:
+    data_left = f.read()
+    encoded_left = base64.b64encode(data_left).decode()
+
+# Mã hoá logo cuối
+with open("fig/ttk.png", "rb") as f:
+    data_right = f.read()
+    encoded_right = base64.b64encode(data_right).decode()
+
+# Start tiêu đè + logo
+st.markdown(
+    f"""
+    <style>
+    .center-header {{
+        text-align: center;
+        margin-bottom: 1em;
+    }}
+
+    .center-header .logo-row {{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        margin-bottom: 0.5em;
+    }}
+
+    .center-header .logo-row img {{
+        height: 2em;
+    }}
+
+    .center-header h1 {{
+        font-size: 2.5em;
+        margin: 0;
+    }}
+    </style>
+
+    <div class="center-header">
+        <div class="logo-row">
+            <img src="data:image/png;base64,{encoded_left}">
+            <img src="data:image/png;base64,{encoded_right}">
+        </div>
+        <h1>Check - Journal</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+# End tiêu đè + logo
 
 # Tải biến môi trường 
 load_dotenv()
@@ -61,53 +111,6 @@ def send_login_log(user_email):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
         server.login(sender_email, sender_pass)
         server.send_message(log_msg)
-
-# Mã hoá logo đầu
-with open("fig/logo.png", "rb") as f:
-    data_left = f.read()
-    encoded_left = base64.b64encode(data_left).decode()
-
-# Mã hoá logo cuối
-with open("fig/ttk3.png", "rb") as f:
-    data_right = f.read()
-    encoded_right = base64.b64encode(data_right).decode()
-
-# Start tiêu đè + logo
-st.markdown(
-    f"""
-    <style>
-    .block-container {{
-        padding-top: 2em;
-    }}
-
-    h1 {{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2.5em;
-        line-height: 1.2;
-    }}
-
-    h1 img.logo-left {{
-        margin-right: 1cm;  /* Logo đầu cách tiêu đề */
-        height: 1em;
-    }}
-
-    h1 img.logo-right {{
-        margin-left: 1cm;  /* Logo cuối cách tiêu đề */
-        height: 1em;
-    }}
-    </style>
-
-    <h1>
-        <img class="logo-left" src="data:image/png;base64,{encoded_left}">
-        Ứng dụng Check - Journal
-        <img class="logo-right" src="data:image/png;base64,{encoded_right}">
-    </h1>
-    """,
-    unsafe_allow_html=True
-)
-# End tiêu đè + logo
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
@@ -313,7 +316,7 @@ if st.session_state['authenticated']:
             from collections import Counter
             import difflib
 
-            st.set_page_config(page_title="Check-Journal", layout="wide")
+            #st.set_page_config(page_title="LaTeX", layout="wide")
             st.subheader("Kiểm tra tham chiếu label &nbsp; & &nbsp; Sắp xếp TLTK theo định dạng \\bibitem")
 
             st.markdown("""
@@ -791,7 +794,7 @@ if st.session_state['authenticated']:
     with tabs[7]:
         st.info("Thông tin ứng dụng")
         st.markdown("""
-        **Tên ứng dụng:** Ứng dụng Check-Journal 
+        **Tên ứng dụng:** Check-Journal 
         
         **Ngày khởi tạo:** 24/09/2024
 
