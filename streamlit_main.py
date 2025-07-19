@@ -791,6 +791,13 @@ if st.session_state['authenticated']:
                 st.warning("🔒 Chức năng này chỉ dành cho Admin")
 
     with tabs[7]:
+        # Cấu hình giao diện
+        st.set_page_config(
+            page_title="Infor",
+            page_icon="🔓",
+            layout="wide",
+            initial_sidebar_state="auto"
+        )
         st.info("Thông tin ứng dụng")
         st.markdown("""
         **Tên ứng dụng:** Ứng dụng Check-Journal 
