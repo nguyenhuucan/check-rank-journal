@@ -729,7 +729,7 @@ if st.session_state['authenticated']:
                 (17, "Tham gia biên tập/bình duyệt cho tạp chí", "1 issue/năm"),
                         ]
                 df = pd.DataFrame(data, columns=["STT", "Hoạt động", "Định mức yêu cầu"])
-                st.dataframe(df)
+                st.dataframe(df, use_container_width=True, hide_index=True)
                 st.write("📌 Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
