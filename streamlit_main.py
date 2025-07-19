@@ -43,7 +43,7 @@ with open("fig/logo.png", "rb") as f:
     encoded_left = base64.b64encode(data_left).decode()
 
 # Mã hoá logo cuối
-with open("fig/ttk3.png", "rb") as f:
+with open("fig/ttk.png", "rb") as f:
     data_right = f.read()
     encoded_right = base64.b64encode(data_right).decode()
 
