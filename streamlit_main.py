@@ -697,16 +697,16 @@ if st.session_state['authenticated']:
                 1️⃣ Có học vị tiến sĩ                  
                 2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo  
                 3️⃣ Là tác giả đứng đầu/gửi bài:  
-                    &nbsp; &nbsp; * 4 công bố WoS (KHTN-KT)  
-                    &nbsp; &nbsp; * Hoặc 2 công bố WoS hoặc 4 Scopus (KHXH)                  
+                    &nbsp; &nbsp; &nbsp; &nbsp; * 4 công bố WoS (KHTN-KT)  
+                    &nbsp; &nbsp; &nbsp; &nbsp; * Hoặc 2 công bố WoS hoặc 4 Scopus (KHXH)                  
                 4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu                  
                 5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến                  
                 6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật                  
                 7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường  
-                🔔 Ghi chú: 
-                &nbsp;&nbsp; Trường không trả thù lao riêng cho những hoạt động này  
-                &nbsp;&nbsp; Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
-                &nbsp;&nbsp; Các hoạt động phải đủ định mức theo quy định
+                🔔 Ghi chú:  
+                &nbsp; &nbsp; &nbsp; &nbsp; * Trường không trả thù lao riêng cho những hoạt động này  
+                &nbsp; &nbsp; &nbsp; &nbsp; * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
+                &nbsp; &nbsp; &nbsp; &nbsp; * Các hoạt động phải đủ định mức theo quy định
                 """)
                 st.write("📌 Biểu mẫu: đang cập nhật")
             else:
