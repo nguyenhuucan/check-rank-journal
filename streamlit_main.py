@@ -707,7 +707,7 @@ if st.session_state['authenticated']:
                 &nbsp; &nbsp; &nbsp; &nbsp; * Trường không trả thù lao riêng cho những hoạt động này  
                 &nbsp; &nbsp; &nbsp; &nbsp; * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
                 &nbsp; &nbsp; &nbsp; &nbsp; * Các hoạt động phải đủ định mức theo quy định  
-                Chi tiết 17 hoạt động:  
+                Chi tiết 17 hoạt động:
                 """)
                 data = [
                 (1, "Giảng dạy lý thuyết/thực hành", "1 môn/năm"),
