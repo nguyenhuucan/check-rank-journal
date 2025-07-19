@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 from choose_year import def_year_choose
 from definition import def_rank_by_name_or_issn, def_list_all_subject, def_check_in_scopus_sjr_wos, def_rank_by_rank_key, def_rank_by_Q_key
 
-# thay đổi định dạng link  
+# Thay đổi định dạng link  
 st.markdown(
     """
     <style>
@@ -28,12 +28,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Cấu hình giao diện
+st.set_page_config(
+    page_title="Check-Journal-V1",
+    page_icon="❤️",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+# End Cấu hình giao diện
+
 # Tải biến môi trường 
 load_dotenv()
 sender_email = os.getenv('EMAIL')
 sender_pass = os.getenv('EMAIL_PASS')
 
-# Hàm gửi OTP
+# Hàm gửi mã đăng nhập
 def send_email(receiver_email, otp):
     msg = MIMEText(f"Xin chào,\nMã đăng nhập của bạn là: {otp}")
     msg['Subject'] = "Mã đăng nhập Check-Journal"
@@ -53,11 +62,6 @@ def send_login_log(user_email):
         server.login(sender_email, sender_pass)
         server.send_message(log_msg)
 
-# Giao diện
-
-# Cấu hình
-st.set_page_config(page_title="Check-Journal", layout="wide")
-
 # Mã hoá logo đầu
 with open("fig/logo.png", "rb") as f:
     data_left = f.read()
@@ -67,7 +71,6 @@ with open("fig/logo.png", "rb") as f:
 with open("fig/ttk3.png", "rb") as f:
     data_right = f.read()
     encoded_right = base64.b64encode(data_right).decode()
-
 
 # Start tiêu đè + logo
 st.markdown(
@@ -105,16 +108,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 # End tiêu đè + logo
-
-# Giao diện tối
-st.set_page_config(
-    page_title="Ứng dụng Check - Journal",
-    page_icon="❤️",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-# End giao diện tối
-
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
@@ -194,10 +187,8 @@ if not st.session_state['authenticated']:
 
     st.stop()
 
-
 # Giao diện chính
 if st.session_state['authenticated']:
-    #st.subheader("Phiên bản 2.1\n-----------------")
     tabs = st.tabs([
         "Năm tra cứu",
         "Tra hạng theo tên hoặc ISSN",
@@ -221,7 +212,7 @@ if st.session_state['authenticated']:
     with tabs[5]:
         def_rank_by_Q_key(st.session_state['year'])
 
-    # 📌 Quyền
+    # Quyền xem tài liệu nội bộ Khoa TTK
     allowed_see_ttk = [
         "phanthanhtoan@tdtu.edu.vn", # Phan Thanh Toàn
         "truongbuuchau@tdtu.edu.vn", # Trương Bửu Châu
@@ -267,25 +258,20 @@ if st.session_state['authenticated']:
         "nguyenthihuong@tdtu.edu.vn", # Nguyễn Thị Hương
     ]
 
+    # Quyền admin
     unblocked_admins = [
         "nguyenhuucan@tdtu.edu.vn",
         "nguyenhuucan@gmail.com"
     ]
 
-    with tabs[6]:  # Tab Cha: Khác
+    with tabs[6]:  # Tab Chức năng khác
         user = st.session_state.get('user_email', '') 
 
         subtabs = st.tabs(["🔬 Thông tin NCKH", "📚 Hỗ trợ LaTeX", "⭐ Truy cập WoS", "📄 Thông tin và tài liệu nội bộ", "🔒 &nbsp; Admin"])
 
-        # ================================
         # Tab con: Thông tin NCKH
-        # ================================
-
         with subtabs[0]:
-            #st.subheader("Thông tin liên quan nghiên cứu khoa học")
             st.markdown("**Tổng hợp thông tin liên quan đến hoạt động nghiên cứu khoa học**")
-
-            #st.image("fig/kind.png", caption="Tổng quan về xếp hạng theo quy định TDTU", width=750 # use_container_width=True)
             st.markdown("""
 
             ---
@@ -320,18 +306,14 @@ if st.session_state['authenticated']:
 
             st.image("fig/kind.png", caption="Phân loại xếp hạng tạp chí theo TDTU", width=750 # use_container_width=True
                         )
-
-        # ================================
-        # Tab con: Hướng dẫn LaTeX
-        # ================================
-        with subtabs[1]:  # Tab con: Hướng dẫn LaTeX
+        # Tab con: Hỗ trợ LaTeX
+        with subtabs[1]:
             import streamlit as st
             import re
             from collections import Counter
             import difflib
 
             st.set_page_config(page_title="Check-Journal", layout="wide")
-
             st.subheader("Kiểm tra tham chiếu label &nbsp; & &nbsp; Sắp xếp TLTK theo định dạng \\bibitem")
 
             st.markdown("""
@@ -374,7 +356,6 @@ if st.session_state['authenticated']:
                     # re.findall với nhóm (18|19|20) chỉ trả về phần nhóm => cần lấy cả match gốc
                     alt_years = re.findall(r'\b(18\d{2}|19\d{2}|20\d{2})\b', text)
                     return int(alt_years[0])
-                
                 return None
 
             if ('main_content' in st.session_state) and ('ref_content' in st.session_state):
@@ -664,7 +645,7 @@ if st.session_state['authenticated']:
                     st.session_state['filename']
                 )
 
-
+        # Tab con: Truy cập Web of Science
         with subtabs[2]:
             
             st.subheader("Truy cập Web of Science - Bản quyền TDTU - Mọi lúc - Mọi nơi")
@@ -682,32 +663,79 @@ if st.session_state['authenticated']:
                 f"""
                 <a href="{wos_url}" target="_blank">🚀 Mở Web of Science và đăng nhập bằng tài khoản ở trên </a>
                 """,
-                unsafe_allow_html=True
-            )
+                unsafe_allow_html=True)
 
-
-        # ================================
-        # Tab con: Tài liệu nội bộ 
-        # ================================
+        # Tab con: Tài liệu nội bộ
         with subtabs[3]:
             if user in allowed_see_ttk:
                 #st.subheader("📄 Tài liệu và thông tin nội bộ")
                 st.info("Bạn đang xem nội dung chỉ dành cho nội bộ Khoa Toán - Thống kê")
 
-                st.write("• Quy định về xếp hạng bài báo")
-                st.image("fig/kind.png", caption="Cách phân loại tạp chí để xếp hạng theo quy định TDTU", width=750 # use_container_width=True
-                        )
-                st.image("fig/rank.png", caption="Cách tính phần trăm xếp hạng theo quy định TDTU", width=750 # use_container_width=True
-                        )
-                st.write("• Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật")
-                st.write("• Biểu mẫu: đang cập nhật")
+                st.write("📌 Quy định về phân loại tạp chí để xếp hạng theo quy định TDTU")
+                st.image("fig/kind.png", width=750)
+                #st.image("fig/rank.png", caption="Cách tính phần trăm xếp hạng theo quy định TDTU", width=750)
+                data = {
+                    "STT": [1, 2, 3, 4, 5, 6, 7],
+                    "Tổng số tạp chí theo CN hẹp": ["≥2000", "1500-1999", "1000-1499", "500-999", "200-499", "50-199", "<50"],
+                    "Ngoại hạng CN (Q1)": ["<0.5%", "<0.5%", "<0.5%", "<0.5%", "<0.9%", "<2.5%", "<3.5%"],
+                    "Hạng 1  (Q1)"  : ["<1%",  "<2%",  "<3%",  "<4%",  "<5%",  "<6%",  "<7%"],
+                    "Hạng 2  (Q1-2)": ["<5%",  "<6%",  "<7%",  "<8%",  "<10%", "<11%", "<15%"],
+                    "Hạng 3  (Q1-2)": ["<10%", "<11%", "<12%", "<13%", "<15%", "<16%", "<20%"],
+                    "Hạng 4  (Q1-2)": ["<18%", "<19%", "<20%", "<21%", "<23%", "<24%", "<28%"],
+                    "Hạng 5  (Q1-3)": ["<30%", "<31%", "<32%", "<33%", "<35%", "<36%", "<40%"],
+                    "Hạng 6  (Q1-3)": ["<43%", "<44%", "<45%", "<46%", "<48%", "<49%", "<53%"],
+                    "Hạng 7  (Q1-3)": ["<56%", "<57%", "<58%", "<59%", "<61%", "<62%", "<66%"],
+                    "Hạng 8  (Q1-3)": ["<69%", "<70%", "<71%", "<72%", "<74%", "<75%", "<79%"],
+                    "Hạng 9  (Q1-4)": ["<82%", "<83%", "<84%", "<85%", "<87%", "<88%", "<92%"],
+                    "Hạng 10 (Q1-4)": ["≥82%", "≥83%", "≥84%", "≥85%", "≥87%", "≥88%", "≥92%"]
+                }
+                df = pd.DataFrame(data)
+                st.write("📌 Cách tính phần trăm xếp hạng theo quy định TDTU")
+                st.dataframe(df, use_container_width=True, hide_index=True)
+
+                st.markdown("""📌 Quy định về tiêu chí ký hợp đồng NCV cộng tác  
+
+                1️⃣ Có học vị tiến sĩ                  
+                2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo  
+                3️⃣ Là tác giả đứng đầu/gửi bài:  
+                  * 04 công bố WoS (KHTN-KT)  
+                  * Hoặc 02 công bố WoS hoặc 04 Scopus (KHXH)                  
+                4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu                  
+                5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến                  
+                6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật                  
+                7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường  
+                🔔 Ghi chú:  
+                  * Trường không trả thù lao riêng cho những hoạt động này  
+                  * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
+                  * Các hoạt động phải đủ định mức theo quy định  
+                  Chi tiết 17 hoạt động:
+                """)
+                data = [
+                (1, "Giảng dạy lý thuyết/thực hành", "1 môn/năm"),
+                (2, "Hướng dẫn nghiên cứu sinh (NCS)", "1 NCS (tính trong 3 năm)"),
+                (3, "Hướng dẫn luận văn thạc sĩ", "1 học viên/năm"),
+                (4, "Hướng dẫn khóa luận tốt nghiệp / đồ án / đề tài sinh viên", "2 SV/năm"),
+                (5, "Hướng dẫn đề tài NCKH sinh viên", "1 đề tài/năm"),
+                (6, "Phản biện đề tài NCKH", "4 đề/năm"),
+                (7, "Chấm luận văn thạc sĩ", "2 luận văn/năm"),
+                (8, "Đánh giá luận án tiến sĩ", "1 hội đồng/năm"),
+                (9, "Báo cáo Journal Club", "2 báo cáo/năm"),
+                (10, "Hướng dẫn nghiên cứu sau tiến sĩ (postdoc)", "1 postdoc/năm"),
+                (11, "Báo cáo chuyên đề nghiên cứu khoa học", "4 chuyên đề/năm"),
+                (12, "Giới thiệu chuyên gia hợp tác với trường", "2 chuyên gia/năm"),
+                (13, "Giới thiệu NCV/giảng viên về trường", "1 người/năm"),
+                (14, "Tham gia trình bày tại hội thảo khoa học", "2 báo cáo/năm"),
+                (15, "Là tác giả chính bài báo không được tài trợ", "2 bài/năm"),
+                (16, "Tham gia hội thảo quốc tế với vai trò session chair", "1 hội thảo/năm"),
+                (17, "Tham gia biên tập/bình duyệt cho tạp chí", "1 issue/năm"),
+                        ]
+                df = pd.DataFrame(data, columns=["STT", "Hoạt động", "Định mức yêu cầu"])
+                st.dataframe(df, use_container_width=True, hide_index=True)
+                st.write("📌 Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
 
-
-        # ================================
-        # Tab con: Admin gỡ khóa
-        # ================================
+        # Tab con: Admin
         with subtabs[4]:
             if user in unblocked_admins:
                 #st.subheader("🔒 Admin: Gỡ khóa email bị chặn")
@@ -756,16 +784,16 @@ if st.session_state['authenticated']:
                             st.warning("⚠️ Bạn chưa chọn email nào để gỡ khoá")
                 else:
                     st.info("✅ Danh sách khoá trống, không cần gỡ")
+
             else:
                 st.warning("🔒 Chức năng này chỉ dành cho Admin")
 
     with tabs[7]:
-        #st.subheader("Thông tin ứng dụng")
         st.info("Thông tin ứng dụng")
         st.markdown("""
         **Tên ứng dụng:** Ứng dụng Check-Journal 
         
-        **Phiên bản:** 25.07.15
+        **Ngày khởi tạo:** 24/09/2024
 
         **Tác giả:** Nguyễn Hữu Cần (Khoa Toán - Thống kê, TDTU)  
 
