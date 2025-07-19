@@ -671,7 +671,7 @@ if st.session_state['authenticated']:
                 #st.subheader("📄 Tài liệu và thông tin nội bộ")
                 st.info("Bạn đang xem nội dung chỉ dành cho nội bộ Khoa Toán - Thống kê")
 
-                st.write("• Quy định về xếp hạng bài báo")
+                st.write("📌 Quy định về xếp hạng bài báo")
                 st.image("fig/kind.png", caption="Cách phân loại tạp chí để xếp hạng theo quy định TDTU", width=750)
                 #st.image("fig/rank.png", caption="Cách tính phần trăm xếp hạng theo quy định TDTU", width=750)
                 data = {
@@ -693,8 +693,8 @@ if st.session_state['authenticated']:
                 st.write("📌 Cách tính phần trăm xếp hạng theo quy định TDTU")
                 st.dataframe(df, use_container_width=True, hide_index=True)
 
-                st.write("• Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật")
-                st.write("• Biểu mẫu: đang cập nhật")
+                st.write("📌 Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật")
+                st.write("📌 Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
 
