@@ -29,11 +29,11 @@ st.markdown(
 )
 
 # Cấu hình
-st.set_page_config(page_title="Check-Journal", layout="wide")
+#st.set_page_config(page_title="Check-Journal", layout="wide")
 
 # Giao diện tối
 st.set_page_config(
-    page_title="Ứng dụng Check - Journal",
+    page_title="Check - Journal",
     page_icon="❤️",
     layout="wide",
     initial_sidebar_state="auto"
