@@ -697,8 +697,8 @@ if st.session_state['authenticated']:
                 1️⃣ Có học vị tiến sĩ                  
                 2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo  
                 3️⃣ Là tác giả đứng đầu/gửi bài:  
-                    &nbsp; &nbsp; &nbsp; &nbsp; * 4 công bố WoS (KHTN-KT)  
-                    &nbsp; &nbsp; &nbsp; &nbsp; * Hoặc 2 công bố WoS hoặc 4 Scopus (KHXH)                  
+                    &nbsp; &nbsp; &nbsp; &nbsp; * 04 công bố WoS (KHTN-KT)  
+                    &nbsp; &nbsp; &nbsp; &nbsp; * Hoặc 02 công bố WoS hoặc 04 Scopus (KHXH)                  
                 4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu                  
                 5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến                  
                 6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật                  
