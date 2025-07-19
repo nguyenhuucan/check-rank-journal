@@ -698,17 +698,17 @@ if st.session_state['authenticated']:
                 1️⃣ Có học vị tiến sĩ                  
                 2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo  
                 3️⃣ Là tác giả đứng đầu/gửi bài:  
-                     * 04 công bố WoS (KHTN-KT)  
-                     * Hoặc 02 công bố WoS hoặc 04 Scopus (KHXH)                  
+                    * 04 công bố WoS (KHTN-KT)  
+                    * Hoặc 02 công bố WoS hoặc 04 Scopus (KHXH)                  
                 4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu                  
                 5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến                  
                 6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật                  
                 7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường  
                 🔔 Ghi chú:  
-                &nbsp; &nbsp; &nbsp; &nbsp; * Trường không trả thù lao riêng cho những hoạt động này  
-                &nbsp; &nbsp; &nbsp; &nbsp; * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
-                &nbsp; &nbsp; &nbsp; &nbsp; * Các hoạt động phải đủ định mức theo quy định  
-                &nbsp; &nbsp; &nbsp; &nbsp;  Chi tiết 17 hoạt động:
+                  * Trường không trả thù lao riêng cho những hoạt động này  
+                  * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
+                  * Các hoạt động phải đủ định mức theo quy định  
+                  Chi tiết 17 hoạt động:
                 """)
                 data = [
                 (1, "Giảng dạy lý thuyết/thực hành", "1 môn/năm"),
