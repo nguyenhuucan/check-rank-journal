@@ -706,8 +706,30 @@ if st.session_state['authenticated']:
                 🔔 Ghi chú:  
                 &nbsp; &nbsp; &nbsp; &nbsp; * Trường không trả thù lao riêng cho những hoạt động này  
                 &nbsp; &nbsp; &nbsp; &nbsp; * Phải đăng ký ít nhất 2 hoạt động/năm trong danh sách 17 hoạt động  
-                &nbsp; &nbsp; &nbsp; &nbsp; * Các hoạt động phải đủ định mức theo quy định
+                &nbsp; &nbsp; &nbsp; &nbsp; * Các hoạt động phải đủ định mức theo quy định  
+                Chi tiết 17 hoạt động:  
                 """)
+                data = [
+                (1, "Giảng dạy lý thuyết/thực hành", "1 môn/năm"),
+                (2, "Hướng dẫn nghiên cứu sinh (NCS)", "1 NCS (tính trong 3 năm)"),
+                (3, "Hướng dẫn luận văn thạc sĩ", "1 học viên/năm"),
+                (4, "Hướng dẫn khóa luận tốt nghiệp / đồ án / đề tài sinh viên", "2 SV/năm"),
+                (5, "Hướng dẫn đề tài NCKH sinh viên", "1 đề tài/năm"),
+                (6, "Phản biện đề tài NCKH", "4 đề/năm"),
+                (7, "Chấm luận văn thạc sĩ", "2 luận văn/năm"),
+                (8, "Đánh giá luận án tiến sĩ", "1 hội đồng/năm"),
+                (9, "Báo cáo Journal Club", "2 báo cáo/năm"),
+                (10, "Hướng dẫn nghiên cứu sau tiến sĩ (postdoc)", "1 postdoc/năm"),
+                (11, "Báo cáo chuyên đề nghiên cứu khoa học", "4 chuyên đề/năm"),
+                (12, "Giới thiệu chuyên gia hợp tác với trường", "2 chuyên gia/năm"),
+                (13, "Giới thiệu NCV/giảng viên về trường", "1 người/năm"),
+                (14, "Tham gia trình bày tại hội thảo khoa học", "2 báo cáo/năm"),
+                (15, "Là tác giả chính bài báo không được tài trợ", "2 bài/năm"),
+                (16, "Tham gia hội thảo quốc tế với vai trò session chair", "1 hội thảo/năm"),
+                (17, "Tham gia biên tập/bình duyệt cho tạp chí", "1 issue/năm"),
+                        ]
+                df = pd.DataFrame(data, columns=["STT", "Hoạt động", "Định mức yêu cầu"])
+                st.dataframe(df)
                 st.write("📌 Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
