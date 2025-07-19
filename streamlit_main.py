@@ -28,24 +28,21 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Cấu hình
-#st.set_page_config(page_title="Check-Journal", layout="wide")
-
-# Giao diện tối
+# Cấu hình giao diện
 st.set_page_config(
-    page_title="Check - Journal",
+    page_title="Check-Journal-V1",
     page_icon="❤️",
     layout="wide",
     initial_sidebar_state="auto"
 )
-# End giao diện tối
+# End Cấu hình giao diện
 
 # Tải biến môi trường 
 load_dotenv()
 sender_email = os.getenv('EMAIL')
 sender_pass = os.getenv('EMAIL_PASS')
 
-# Hàm gửi OTP
+# Hàm gửi mã đăng nhập
 def send_email(receiver_email, otp):
     msg = MIMEText(f"Xin chào,\nMã đăng nhập của bạn là: {otp}")
     msg['Subject'] = "Mã đăng nhập Check-Journal"
@@ -65,8 +62,6 @@ def send_login_log(user_email):
         server.login(sender_email, sender_pass)
         server.send_message(log_msg)
 
-
-
 # Mã hoá logo đầu
 with open("fig/logo.png", "rb") as f:
     data_left = f.read()
@@ -76,7 +71,6 @@ with open("fig/logo.png", "rb") as f:
 with open("fig/ttk3.png", "rb") as f:
     data_right = f.read()
     encoded_right = base64.b64encode(data_right).decode()
-
 
 # Start tiêu đè + logo
 st.markdown(
@@ -114,9 +108,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 # End tiêu đè + logo
-
-
-
 
 # Đăng nhập
 if 'authenticated' not in st.session_state:
@@ -196,10 +187,8 @@ if not st.session_state['authenticated']:
 
     st.stop()
 
-
 # Giao diện chính
 if st.session_state['authenticated']:
-    #st.subheader("Phiên bản 2.1\n-----------------")
     tabs = st.tabs([
         "Năm tra cứu",
         "Tra hạng theo tên hoặc ISSN",
@@ -223,7 +212,7 @@ if st.session_state['authenticated']:
     with tabs[5]:
         def_rank_by_Q_key(st.session_state['year'])
 
-    # 📌 Quyền
+    # Quyền xem tài liệu nội bộ Khoa TTK
     allowed_see_ttk = [
         "phanthanhtoan@tdtu.edu.vn", # Phan Thanh Toàn
         "truongbuuchau@tdtu.edu.vn", # Trương Bửu Châu
@@ -269,25 +258,20 @@ if st.session_state['authenticated']:
         "nguyenthihuong@tdtu.edu.vn", # Nguyễn Thị Hương
     ]
 
+    # Quyền admin
     unblocked_admins = [
         "nguyenhuucan@tdtu.edu.vn",
         "nguyenhuucan@gmail.com"
     ]
 
-    with tabs[6]:  # Tab Cha: Khác
+    with tabs[6]:  # Tab Chức năng khác
         user = st.session_state.get('user_email', '') 
 
         subtabs = st.tabs(["🔬 Thông tin NCKH", "📚 Hỗ trợ LaTeX", "⭐ Truy cập WoS", "📄 Thông tin và tài liệu nội bộ", "🔒 &nbsp; Admin"])
 
-        # ================================
         # Tab con: Thông tin NCKH
-        # ================================
-
         with subtabs[0]:
-            #st.subheader("Thông tin liên quan nghiên cứu khoa học")
             st.markdown("**Tổng hợp thông tin liên quan đến hoạt động nghiên cứu khoa học**")
-
-            #st.image("fig/kind.png", caption="Tổng quan về xếp hạng theo quy định TDTU", width=750 # use_container_width=True)
             st.markdown("""
 
             ---
@@ -322,18 +306,14 @@ if st.session_state['authenticated']:
 
             st.image("fig/kind.png", caption="Phân loại xếp hạng tạp chí theo TDTU", width=750 # use_container_width=True
                         )
-
-        # ================================
-        # Tab con: Hướng dẫn LaTeX
-        # ================================
-        with subtabs[1]:  # Tab con: Hướng dẫn LaTeX
+        # Tab con: Hỗ trợ LaTeX
+        with subtabs[1]:
             import streamlit as st
             import re
             from collections import Counter
             import difflib
 
             st.set_page_config(page_title="Check-Journal", layout="wide")
-
             st.subheader("Kiểm tra tham chiếu label &nbsp; & &nbsp; Sắp xếp TLTK theo định dạng \\bibitem")
 
             st.markdown("""
@@ -376,7 +356,6 @@ if st.session_state['authenticated']:
                     # re.findall với nhóm (18|19|20) chỉ trả về phần nhóm => cần lấy cả match gốc
                     alt_years = re.findall(r'\b(18\d{2}|19\d{2}|20\d{2})\b', text)
                     return int(alt_years[0])
-                
                 return None
 
             if ('main_content' in st.session_state) and ('ref_content' in st.session_state):
@@ -666,7 +645,7 @@ if st.session_state['authenticated']:
                     st.session_state['filename']
                 )
 
-
+        # Tab con: Truy cập Web of Science
         with subtabs[2]:
             
             st.subheader("Truy cập Web of Science - Bản quyền TDTU - Mọi lúc - Mọi nơi")
@@ -684,13 +663,9 @@ if st.session_state['authenticated']:
                 f"""
                 <a href="{wos_url}" target="_blank">🚀 Mở Web of Science và đăng nhập bằng tài khoản ở trên </a>
                 """,
-                unsafe_allow_html=True
-            )
+                unsafe_allow_html=True)
 
-
-        # ================================
-        # Tab con: Tài liệu nội bộ 
-        # ================================
+        # Tab con: Tài liệu nội bộ
         with subtabs[3]:
             if user in allowed_see_ttk:
                 #st.subheader("📄 Tài liệu và thông tin nội bộ")
@@ -705,7 +680,6 @@ if st.session_state['authenticated']:
                 st.write("• Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
-
 
         # ================================
         # Tab con: Admin gỡ khóa
