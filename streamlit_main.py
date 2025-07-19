@@ -695,19 +695,14 @@ if st.session_state['authenticated']:
 
                 st.markdown("""📌 Quy định về tiêu chí tuyển NCV cộng tác:  
                 1️⃣ Có học vị tiến sĩ                  
-                2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo
-                
-                3️⃣ Là tác giả đứng đầu/gửi bài:
-                    * 4 công bố WoS (KHTN-KT)
-                    * Hoặc 2 công bố WoS hoặc 4 Scopus (KHXH)
-                
-                4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu
-                
-                5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến
-                
-                6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật
-                
-                7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường                           
+                2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo  
+                3️⃣ Là tác giả đứng đầu/gửi bài:  
+                    * 4 công bố WoS (KHTN-KT)  
+                    * Hoặc 2 công bố WoS hoặc 4 Scopus (KHXH)                  
+                4️⃣ Có kế hoạch hợp tác công bố khoa học với nhân sự cơ hữu                  
+                5️⃣ Đến Trường làm việc ít nhất 1 lần nếu chưa từng đến                  
+                6️⃣ Không có dấu hiệu vi phạm liêm chính học thuật                  
+                7️⃣ Có thể làm các hoạt động khác theo phê duyệt của Trường
                 """)
                 st.write("📌 Biểu mẫu: đang cập nhật")
             else:
