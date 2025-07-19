@@ -78,35 +78,38 @@ st.markdown(
     <style>
     .block-container {{
         padding-top: 2em;
+        text-align: center;
     }}
 
-    h1 {{
+    .logo-row {{
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 2em;
+        margin-bottom: 0.5em;
+    }}
+
+    .logo-row img {{
+        height: 2em;
+    }}
+
+    h1 {{
         font-size: 2.5em;
         line-height: 1.2;
-    }}
-
-    h1 img.logo-left {{
-        margin-right: 1cm;  /* Logo đầu cách tiêu đề */
-        height: 1em;
-    }}
-
-    h1 img.logo-right {{
-        margin-left: 1cm;  /* Logo cuối cách tiêu đề */
-        height: 1em;
+        margin: 0;
     }}
     </style>
 
-    <h1>
-        <img class="logo-left" src="data:image/png;base64,{encoded_left}">
-        Ứng dụng Check - Journal
-        <img class="logo-right" src="data:image/png;base64,{encoded_right}">
-    </h1>
+    <div class="logo-row">
+        <img src="data:image/png;base64,{encoded_left}">
+        <img src="data:image/png;base64,{encoded_right}">
+    </div>
+
+    <h1>Ứng dụng Check - Journal</h1>
     """,
     unsafe_allow_html=True
 )
+
 # End tiêu đè + logo
 
 # Đăng nhập
