@@ -672,18 +672,14 @@ if st.session_state['authenticated']:
                 st.info("Bạn đang xem nội dung chỉ dành cho nội bộ Khoa Toán - Thống kê")
 
                 st.write("• Quy định về xếp hạng bài báo")
-                st.image("fig/kind.png", caption="Cách phân loại tạp chí để xếp hạng theo quy định TDTU", width=750 # use_container_width=True
-                        )
-                st.image("fig/rank.png", caption="Cách tính phần trăm xếp hạng theo quy định TDTU", width=750 # use_container_width=True
-                        )
+                st.image("fig/kind.png", caption="Cách phân loại tạp chí để xếp hạng theo quy định TDTU", width=750)
+                st.image("fig/rank.png", caption="Cách tính phần trăm xếp hạng theo quy định TDTU", width=750)
                 st.write("• Quy định về tiêu chí tuyển NCV cộng tác: đang cập nhật")
                 st.write("• Biểu mẫu: đang cập nhật")
             else:
                 st.warning("🚫 Bạn chưa được phân quyền để xem tài liệu nội bộ Khoa Toán - Thống kê")
 
-        # ================================
-        # Tab con: Admin gỡ khóa
-        # ================================
+        # Tab con: Admin
         with subtabs[4]:
             if user in unblocked_admins:
                 #st.subheader("🔒 Admin: Gỡ khóa email bị chặn")
@@ -760,12 +756,11 @@ if st.session_state['authenticated']:
                 st.warning("🔒 Chức năng này chỉ dành cho Admin")
 
     with tabs[7]:
-        #st.subheader("Thông tin ứng dụng")
         st.info("Thông tin ứng dụng")
         st.markdown("""
         **Tên ứng dụng:** Ứng dụng Check-Journal 
         
-        **Phiên bản:** 25.07.15
+        **Ngày khởi tạo:** 24/09/2024
 
         **Tác giả:** Nguyễn Hữu Cần (Khoa Toán - Thống kê, TDTU)  
 
