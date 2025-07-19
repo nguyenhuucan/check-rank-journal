@@ -693,10 +693,8 @@ if st.session_state['authenticated']:
                 st.write("📌 Cách tính phần trăm xếp hạng theo quy định TDTU")
                 st.dataframe(df, use_container_width=True, hide_index=True)
 
-                st.markdown("""📌 Quy định về tiêu chí tuyển NCV cộng tác:
-
-                1️⃣ Có học vị tiến sĩ
-                
+                st.markdown("""📌 Quy định về tiêu chí tuyển NCV cộng tác:  
+                1️⃣ Có học vị tiến sĩ                  
                 2️⃣ Có kế hoạch nghiên cứu phù hợp với định hướng đào tạo
                 
                 3️⃣ Là tác giả đứng đầu/gửi bài:
