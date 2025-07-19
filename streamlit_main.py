@@ -31,7 +31,7 @@ st.markdown(
 # Cấu hình giao diện
 st.set_page_config(
     page_title="Check-Journal-V1",
-    page_icon="❤️",
+    page_icon="🔓",
     layout="wide",
     initial_sidebar_state="auto"
 )
