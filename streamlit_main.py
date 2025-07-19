@@ -313,7 +313,7 @@ if st.session_state['authenticated']:
             from collections import Counter
             import difflib
 
-            st.set_page_config(page_title="LaTeX", layout="wide")
+            #st.set_page_config(page_title="LaTeX", layout="wide")
             st.subheader("Kiểm tra tham chiếu label &nbsp; & &nbsp; Sắp xếp TLTK theo định dạng \\bibitem")
 
             st.markdown("""
