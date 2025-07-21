@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Hàm def_year_choose
 def def_year_choose(year):
-    if st.button("📥Cập nhật danh sách năm tra cứu"):
+    if st.button("📥 Cập nhật danh sách năm tra cứu"):
         with st.spinner("Đang cập nhật danh sách năm ..."):
             url_take_year_check = 'https://www.scimagojr.com/journalrank.php'
             response_take_year = requests.get(url_take_year_check)
@@ -430,7 +430,7 @@ def check_rank_by_name_1_category(id_category, year_check):
 def def_list_all_subject(year):
     st.subheader(f"Năm đang tra cứu — {year}")
 
-    if st.button("📥Tải danh sách tất cả các chuyên ngành"):
+    if st.button("📥 Tải danh sách tất cả các chuyên ngành"):
         with st.spinner("Đang tải danh sách..."):
             url = f"https://www.scimagojr.com/journalrank.php?year={year}"
             response = requests.get(url)
