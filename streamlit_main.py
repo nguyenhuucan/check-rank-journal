@@ -189,6 +189,8 @@ if not st.session_state['authenticated']:
                 st.error(f"❌ Mã đăng nhập không đúng! Bạn còn {attempts_left} lần thử")
 
     st.stop()
+# kết thúc đăng nhập
+
 
 # Giao diện chính
 if st.session_state['authenticated']:
