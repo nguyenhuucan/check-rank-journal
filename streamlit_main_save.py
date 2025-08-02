@@ -143,7 +143,7 @@ if not st.session_state['authenticated']:
         st.stop()
 
     # Danh sách các email được phép nhận OTP
-    allowed_emails_otp = [
+    allowed_emails_otp = [ 
         "@tdtu.edu.vn",
         "nguyenhuucan@gmail.com",
         "nhc156@gmail.com",
@@ -189,6 +189,8 @@ if not st.session_state['authenticated']:
                 st.error(f"❌ Mã đăng nhập không đúng! Bạn còn {attempts_left} lần thử")
 
     st.stop()
+# kết thúc đăng nhập
+
 
 # Giao diện chính
 if st.session_state['authenticated']:
