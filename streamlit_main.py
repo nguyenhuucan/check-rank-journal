@@ -798,7 +798,7 @@ if st.session_state['authenticated']:
         st.markdown("""
         **Tên ứng dụng:** Check-Journal 
         
-        **Ngày khởi tạo:** 24/09/2024
+        **Ngày khởi tạo:** 01/07/2025
 
         **Tác giả:** Nguyễn Hữu Cần (Khoa Toán - Thống kê, TDTU)  
 
